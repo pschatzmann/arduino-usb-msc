@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fs_0',['fs',['../structusbmscfs_1_1Ext4Backend_1_1Impl.html#a6e5ca8f27b2cb6e7f8583a2e6c4004da',1,'usbmscfs::Ext4Backend::Impl::fs'],['../structusbmscfs_1_1FatBackend_1_1Impl.html#a429f270aeff3cdd5b56a2cbe32c6ff03',1,'usbmscfs::FatBackend::Impl::fs']]]
+  ['product_5fid_0',['product_id',['../structMSCInquiry.html#a7e4e724a3a15783f03f204762fd3f99e',1,'MSCInquiry']]],
+  ['product_5frev_1',['product_rev',['../structMSCInquiry.html#a50d28a35091be42f7d0a209a7020f95f',1,'MSCInquiry']]]
 ];

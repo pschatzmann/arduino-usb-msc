@@ -1,5 +1,0 @@
-<map id="USBMscSdCard" name="USBMscSdCard">
-<area shape="rect" id="Node000001" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="23,81,143,109"/>
-<area shape="rect" id="Node000002" href="$classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou..." alt="" coords="5,5,161,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,47,86,81,80,80,81,51"/>
-</map>

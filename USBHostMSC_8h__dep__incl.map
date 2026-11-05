@@ -1,19 +1,11 @@
 <map id="src/USBHostMSC.h" name="src/USBHostMSC.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="192,5,334,33"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="106,5,248,33"/>
 <area shape="rect" id="Node000002" href="$USBHostMSC_8cpp.html" title=" " alt="" coords="5,81,163,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,41,117,83,114,78,218,37"/>
-<area shape="rect" id="Node000003" href="$USBMscFSPool_8h.html" title=" " alt="" coords="186,81,339,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,47,265,82,260,80,261,51"/>
-<area shape="rect" id="Node000004" href="$USBMscPartition_8h.html" title=" " alt="" coords="362,81,526,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="309,37,414,80,409,81,309,42"/>
-<area shape="rect" id="Node000005" href="$USBMscPartition_8cpp.html" title=" " alt="" coords="138,157,316,184"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="389,115,266,159,265,154,393,113"/>
-<area shape="rect" id="Node000006" href="$USBMscExt4Backend_8h.html" title=" " alt="" coords="339,157,549,184"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="446,122,446,158,442,155,442,127"/>
-<area shape="rect" id="Node000008" href="$USBMscFatBackend_8h.html" title=" " alt="" coords="580,157,780,184"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="501,111,640,156,635,156,500,116"/>
-<area shape="rect" id="Node000007" href="$USBMscExt4Backend_8cpp.html" title=" " alt="" coords="328,232,552,260"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="444,198,443,234,439,230,441,202"/>
-<area shape="rect" id="Node000009" href="$USBMscFatBackend_8cpp.html" title=" " alt="" coords="577,232,791,260"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="683,198,685,234,681,230,680,202"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,45,102,83,99,79,151,41"/>
+<area shape="rect" id="Node000003" href="$USBHostMscDisk_8h.html" title=" " alt="" coords="186,81,355,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,40,257,80,251,81,205,45"/>
+<area shape="rect" id="Node000004" href="$USBHostMscExt4IO_8h.html" title="TinyEXT4 driver for a USB flash drive: mount it with tinyext4::Ext4FS (ext2/3/4; whole disk,..." alt="" coords="78,157,260,184"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,117,189,159,186,154,238,119"/>
+<area shape="rect" id="Node000005" href="$USBHostMscFatIO_8h.html" title="TinyFATFS driver for a USB flash drive: mount it with fatfs::SDClass (FAT12/16/32,..." alt="" coords="284,157,457,184"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="302,116,356,157,350,156,300,121"/>
 </map>

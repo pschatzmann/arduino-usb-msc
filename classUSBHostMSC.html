@@ -100,8 +100,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e6bbae4b9f1eac1c746e42eeafa87ae" id="r_a2e6bbae4b9f1eac1c746e42eeafa87ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a2e6bbae4b9f1eac1c746e42eeafa87ae">USBHostMSC</a> (<a class="el" href="classUSBMscFSBackend.html">USBMscFSBackend</a> *fsBackend=nullptr)</td></tr>
-<tr class="separator:a2e6bbae4b9f1eac1c746e42eeafa87ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a653a3ab8b24cce7bb101c88bd495262d" id="r_a653a3ab8b24cce7bb101c88bd495262d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a653a3ab8b24cce7bb101c88bd495262d">USBHostMSC</a> ()</td></tr>
+<tr class="separator:a653a3ab8b24cce7bb101c88bd495262d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f4eb0517716840e101450aec18b83c0" id="r_a2f4eb0517716840e101450aec18b83c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a2f4eb0517716840e101450aec18b83c0">begin</a> (uint8_t rhport=<a class="el" href="USBHostMSC_8h.html#a5394592e3c54778fc3855911f8a945aa">USB_HOST_MSC_RHPORT</a>)</td></tr>
 <tr class="separator:a2f4eb0517716840e101450aec18b83c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f773d7ff8170ae3982ee90d00f9504" id="r_a22f773d7ff8170ae3982ee90d00f9504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a22f773d7ff8170ae3982ee90d00f9504">task</a> ()</td></tr>
@@ -109,6 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0116ca32639e570ae28745be153495ef" id="r_a0116ca32639e570ae28745be153495ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a0116ca32639e570ae28745be153495ef">isMounted</a> (uint8_t dev_addr) const</td></tr>
 <tr class="memdesc:a0116ca32639e570ae28745be153495ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">True once dev_addr has enumerated a Mass Storage interface.  <br /></td></tr>
 <tr class="separator:a0116ca32639e570ae28745be153495ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b23d0b28e70ab29dd0f1d4de863ecd5" id="r_a2b23d0b28e70ab29dd0f1d4de863ecd5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a2b23d0b28e70ab29dd0f1d4de863ecd5">mountGeneration</a> (uint8_t dev_addr) const</td></tr>
+<tr class="separator:a2b23d0b28e70ab29dd0f1d4de863ecd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80c399a8563922958d0c9f51b7e56a5e" id="r_a80c399a8563922958d0c9f51b7e56a5e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBHostMSC.html#a80c399a8563922958d0c9f51b7e56a5e">mountedDeviceCount</a> () const</td></tr>
 <tr class="memdesc:a80c399a8563922958d0c9f51b7e56a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of currently mounted Mass Storage devices.  <br /></td></tr>
 <tr class="separator:a80c399a8563922958d0c9f51b7e56a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,30 +171,20 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2e6bbae4b9f1eac1c746e42eeafa87ae" name="a2e6bbae4b9f1eac1c746e42eeafa87ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e6bbae4b9f1eac1c746e42eeafa87ae">&#9670;&#160;</a></span>USBHostMSC()</h2>
+<a id="a653a3ab8b24cce7bb101c88bd495262d" name="a653a3ab8b24cce7bb101c88bd495262d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a653a3ab8b24cce7bb101c88bd495262d">&#9670;&#160;</a></span>USBHostMSC()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">USBHostMSC::USBHostMSC </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classUSBMscFSBackend.html">USBMscFSBackend</a> *&#160;</td>
-          <td class="paramname"><em>fsBackend</em> = <code>nullptr</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>fsBackend, if given (e.g. a USBMscFatFS, USBMscExt4FS or USBMscAutoFS), is auto-mounted/unmounted as devices come and go, before <a class="el" href="classUSBHostMSC.html#a96b37efcb835a184ff4d4b51b5d2a277" title="Invoked (from task()) when a Mass Storage device mounts.">onMount()</a>/onUnmount() callbacks run. </p>
 
 </div>
 </div>
@@ -474,6 +466,25 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of currently mounted Mass Storage devices. </p>
+
+</div>
+</div>
+<a id="a2b23d0b28e70ab29dd0f1d4de863ecd5" name="a2b23d0b28e70ab29dd0f1d4de863ecd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b23d0b28e70ab29dd0f1d4de863ecd5">&#9670;&#160;</a></span>mountGeneration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t USBHostMSC::mountGeneration </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev_addr</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Counts the mounts of dev_addr: changes every time a device mounts at that address. TinyUSB reuses addresses, so a drive that was pulled and replaced (by another one) can come back at the same dev_addr; comparing the generation tells the two apart (see <a class="el" href="classUSBHostMscDisk.html" title="One USB mass storage device (LUN) as a device of 512-byte sectors: the common part of the filesystem ...">USBHostMscDisk</a>). </p>
 
 </div>
 </div>

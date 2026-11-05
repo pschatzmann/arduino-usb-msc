@@ -76,76 +76,38 @@ $(function() {
 <div class="textblock">
 <p><a href="hierarchy.html">Go to the textual class hierarchy</a></p>
 </div><table border="0" cellspacing="10" cellpadding="0">
-<tr><td><img src="inherit_graph_0.png" border="0" usemap="#aMSCInquiry" alt=""/>
+<tr><td><img src="inherit_graph_0.png" border="0" usemap="#afatfs_1_1IO" alt=""/>
+<map name="afatfs_1_1IO" id="afatfs_1_1IO">
+<area shape="rect" title=" " alt="" coords="5,5,79,33"/>
+<area shape="rect" href="classUSBHostMscFatIO.html" title=" " alt="" coords="127,5,264,33"/>
+<area shape="poly" title=" " alt="" coords="94,17,129,19,123,19,94,22"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_1.png" border="0" usemap="#aMSCInquiry" alt=""/>
 <map name="aMSCInquiry" id="aMSCInquiry">
 <area shape="rect" href="structMSCInquiry.html" title="SCSI Inquiry response, trimmed to plain C&#45;strings for convenience." alt="" coords="5,5,101,33"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_1.png" border="0" usemap="#aUSBDeviceMSC" alt=""/>
-<map name="aUSBDeviceMSC" id="aUSBDeviceMSC">
-<area shape="rect" href="classUSBDeviceMSC.html" title="Exports a USBMscBlockDevice to the USB host (PC)." alt="" coords="5,5,128,33"/>
+<tr><td><img src="inherit_graph_2.png" border="0" usemap="#atinyext4_1_1IO" alt=""/>
+<map name="atinyext4_1_1IO" id="atinyext4_1_1IO">
+<area shape="rect" title=" " alt="" coords="5,5,103,33"/>
+<area shape="rect" href="classUSBHostMscExt4IO.html" title=" " alt="" coords="151,5,298,33"/>
+<area shape="poly" title=" " alt="" coords="118,17,153,19,148,19,118,22"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_2.png" border="0" usemap="#aUSBHostMSC" alt=""/>
+<tr><td><img src="inherit_graph_3.png" border="0" usemap="#aUSBDeviceMSC" alt=""/>
+<map name="aUSBDeviceMSC" id="aUSBDeviceMSC">
+<area shape="rect" href="classUSBDeviceMSC.html" title="Exports a block driver to the USB host (PC) as a USB drive." alt="" coords="5,5,128,33"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_4.png" border="0" usemap="#aUSBHostMSC" alt=""/>
 <map name="aUSBHostMSC" id="aUSBHostMSC">
 <area shape="rect" href="classUSBHostMSC.html" title="Blocking wrapper around TinyUSB&#39;s USB Host Mass Storage (tuh_msc_*) class driver. One instance manage..." alt="" coords="5,5,113,33"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_3.png" border="0" usemap="#aUSBMscBlockDevice" alt=""/>
-<map name="aUSBMscBlockDevice" id="aUSBMscBlockDevice">
-<area shape="rect" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou..." alt="" coords="5,57,161,85"/>
-<area shape="rect" href="classUSBMscNbdBlockDevice.html" title="USBMscBlockDevice on top of an nbd::NBDClient (512&#45;byte blocks)." alt="" coords="209,5,390,33"/>
-<area shape="poly" title=" " alt="" coords="158,51,241,32,236,35,159,56"/>
-<area shape="rect" href="classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="233,57,366,85"/>
-<area shape="poly" title=" " alt="" coords="176,69,235,70,230,72,176,74"/>
-<area shape="rect" href="classUSBMscSdCard.html" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="239,109,360,137"/>
-<area shape="poly" title=" " alt="" coords="159,87,241,108,236,109,158,92"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_4.png" border="0" usemap="#ausbmscfs_1_1Backend" alt=""/>
-<map name="ausbmscfs_1_1Backend" id="ausbmscfs_1_1Backend">
-<area shape="rect" href="classusbmscfs_1_1Backend.html" title="Minimal mounted&#45;filesystem interface, implemented once per filesystem backend." alt="" coords="5,32,152,60"/>
-<area shape="rect" href="classusbmscfs_1_1Ext4Backend.html" title="ext2/ext3/ext4 filesystem backend built on TinyEXT4 (MIT), a header&#45;only ext implementation without j..." alt="" coords="200,5,375,33"/>
-<area shape="poly" title=" " alt="" coords="166,32,202,30,196,31,167,37"/>
-<area shape="rect" href="classusbmscfs_1_1FatBackend.html" title="FAT12/16/32/exFAT filesystem backend built on TinyFATFS." alt="" coords="205,57,370,85"/>
-<area shape="poly" title=" " alt="" coords="167,54,207,61,201,61,167,59"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_5.png" border="0" usemap="#ausbmscfs_1_1BackendFile" alt=""/>
-<map name="ausbmscfs_1_1BackendFile" id="ausbmscfs_1_1BackendFile">
-<area shape="rect" href="classusbmscfs_1_1BackendFile.html" title="Minimal POSIX&#45;ish open file (or open directory) handle, implemented once per filesystem backend (FAT,..." alt="" coords="5,5,175,33"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_6.png" border="0" usemap="#ausbmscfs_1_1Ext4Backend_1_1Impl" alt=""/>
-<map name="ausbmscfs_1_1Ext4Backend_1_1Impl" id="ausbmscfs_1_1Ext4Backend_1_1Impl">
-<area shape="rect" href="structusbmscfs_1_1Ext4Backend_1_1Impl.html" title=" " alt="" coords="5,5,181,50"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_7.png" border="0" usemap="#ausbmscfs_1_1FatBackend_1_1Impl" alt=""/>
-<map name="ausbmscfs_1_1FatBackend_1_1Impl" id="ausbmscfs_1_1FatBackend_1_1Impl">
-<area shape="rect" href="structusbmscfs_1_1FatBackend_1_1Impl.html" title=" " alt="" coords="5,5,171,50"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" usemap="#aUSBMscFSBackend" alt=""/>
-<map name="aUSBMscFSBackend" id="aUSBMscFSBackend">
-<area shape="rect" href="classUSBMscFSBackend.html" title="Interface implemented by filesystem&#45;mounting classes (USBMscFatFS, USBMscExt4FS, USBMscAutoFS) so one..." alt="" coords="5,14,150,42"/>
-<area shape="rect" href="classUSBMscFSPool.html" title="Mounts up to MaxDevices FSType filesystems simultaneously, one per USB Mass Storage device address – ..." alt="" coords="198,5,379,50"/>
-<area shape="poly" title=" " alt="" coords="165,25,200,27,194,28,165,30"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" usemap="#aUSBMscPartition" alt=""/>
-<map name="aUSBMscPartition" id="aUSBMscPartition">
-<area shape="rect" href="classUSBMscPartition.html" title="A block&#45;device view of either a single MBR partition or a whole, unpartitioned disk...." alt="" coords="5,5,134,33"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" usemap="#aUSBMscPartitionEntry" alt=""/>
-<map name="aUSBMscPartitionEntry" id="aUSBMscPartitionEntry">
-<area shape="rect" href="structUSBMscPartitionEntry.html" title="One entry of an MBR partition table." alt="" coords="5,5,168,33"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" usemap="#aUSBMscPartitionTable" alt=""/>
-<map name="aUSBMscPartitionTable" id="aUSBMscPartitionTable">
-<area shape="rect" href="classUSBMscPartitionTable.html" title="Reads and parses a classic MBR (DOS) partition table from LBA 0." alt="" coords="5,5,168,33"/>
+<tr><td><img src="inherit_graph_5.png" border="0" usemap="#aUSBHostMscDisk" alt=""/>
+<map name="aUSBHostMscDisk" id="aUSBHostMscDisk">
+<area shape="rect" href="classUSBHostMscDisk.html" title="One USB mass storage device (LUN) as a device of 512&#45;byte sectors: the common part of the filesystem ..." alt="" coords="5,5,139,33"/>
 </map>
 </td></tr>
 </table>

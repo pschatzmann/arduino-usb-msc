@@ -1,5 +1,0 @@
-<map id="usbmscfs::FatBackend" name="usbmscfs::FatBackend">
-<area shape="rect" id="Node000001" title="FAT12/16/32/exFAT filesystem backend built on TinyFATFS." alt="" coords="5,81,171,109"/>
-<area shape="rect" id="Node000002" href="$classusbmscfs_1_1Backend.html" title="Minimal mounted&#45;filesystem interface, implemented once per filesystem backend." alt="" coords="15,5,161,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,47,90,82,86,80,86,51"/>
-</map>

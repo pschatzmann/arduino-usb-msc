@@ -1,23 +1,9 @@
 <map id="src/USBMsc_config.h" name="src/USBMsc_config.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="935,5,1090,33"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="203,5,358,33"/>
 <area shape="rect" id="Node000002" href="$USBDeviceMSC_8cpp.html" title=" " alt="" coords="5,81,178,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="917,26,597,49,190,84,178,85,178,80,190,78,597,44,923,25"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,40,126,83,124,78,230,38"/>
 <area shape="rect" id="Node000003" href="$USBHostMSC_8cpp.html" title=" " alt="" coords="202,81,360,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="922,28,672,53,372,84,360,85,360,80,371,78,671,47,917,28"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="283,47,283,82,279,79,279,51"/>
 <area shape="rect" id="Node000004" href="$USBHostMSC__stm32_8cpp.html" title=" " alt="" coords="384,81,589,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="922,33,581,83,581,78,917,33"/>
-<area shape="rect" id="Node000005" href="$USBMscExt4FSBase_8cpp.html" title=" " alt="" coords="613,81,813,109"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="947,37,767,83,766,78,942,37"/>
-<area shape="rect" id="Node000006" href="$USBMscFatFS_8cpp.html" title=" " alt="" coords="838,81,996,109"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="986,42,935,83,933,78,981,44"/>
-<area shape="rect" id="Node000007" href="$USBMscPartition_8cpp.html" title=" " alt="" coords="1020,81,1198,109"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1043,40,1094,81,1089,80,1041,45"/>
-<area shape="rect" id="Node000008" href="$USBMscExt4Backend_8cpp.html" title=" " alt="" coords="1222,81,1446,109"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1086,34,1279,80,1274,80,1085,40"/>
-<area shape="rect" id="Node000009" href="$USBMscFatBackend_8cpp.html" title=" " alt="" coords="1471,81,1685,109"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1106,30,1479,80,1474,80,1106,35"/>
-<area shape="rect" id="Node000010" href="$USBMscFsAdapterEsp32_8cpp.html" title=" " alt="" coords="1709,81,1954,109"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1106,26,1697,78,1711,82,1706,82,1697,84,1106,31"/>
-<area shape="rect" id="Node000011" href="$USBMscFsAdapterRp2040_8cpp.html" title=" " alt="" coords="1978,81,2234,109"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1106,23,1482,45,1966,78,1981,82,1975,82,1966,84,1481,51,1106,28"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="332,36,452,80,447,81,331,41"/>
 </map>

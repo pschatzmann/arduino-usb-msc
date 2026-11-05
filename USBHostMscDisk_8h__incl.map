@@ -1,0 +1,9 @@
+<map id="src/USBHostMscDisk.h" name="src/USBHostMscDisk.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,5,183,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,76,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,36,63,70,58,67,90,31"/>
+<area shape="rect" id="Node000003" href="$USBHostMSC_8h.html" title=" " alt="" coords="100,81,219,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,31,141,68,136,69,109,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="86,157,233,184"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="161,107,162,142,157,140,157,111"/>
+</map>

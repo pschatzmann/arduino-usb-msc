@@ -1,0 +1,13 @@
+<map id="src/USBHostMscExt4IO.h" name="src/USBHostMscExt4IO.h">
+<area shape="rect" id="Node000001" title="TinyEXT4 driver for a USB flash drive: mount it with tinyext4::Ext4FS (ext2/3/4; whole disk,..." alt="" coords="33,5,216,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,100,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,36,78,71,74,68,113,31"/>
+<area shape="rect" id="Node000003" href="$USBHostMscDisk_8h.html" title=" " alt="" coords="124,81,269,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,31,176,69,171,70,137,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,157,172,184"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,107,159,146,155,143,184,111"/>
+<area shape="rect" id="Node000005" href="$USBHostMSC_8h.html" title=" " alt="" coords="196,157,315,184"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="208,107,238,145,233,144,206,112"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="182,232,329,260"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="257,183,257,218,253,215,253,187"/>
+</map>

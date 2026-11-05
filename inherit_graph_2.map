@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classUSBHostMSC.html" title="Blocking wrapper around TinyUSB&#39;s USB Host Mass Storage (tuh_msc_*) class driver. One instance manage..." alt="" coords="5,5,113,33"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,103,33"/>
+<area shape="rect" id="Node000001" href="$classUSBHostMscExt4IO.html" title=" " alt="" coords="151,5,298,33"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="118,17,153,19,148,19,118,22"/>
 </map>

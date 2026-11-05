@@ -71,13 +71,14 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classUSBDeviceMSC-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">USBDeviceMSC Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Exports a <a class="el" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou...">USBMscBlockDevice</a> to the USB host (PC).  
+<p>Exports a block driver to the USB host (PC) as a USB drive.  
  <a href="classUSBDeviceMSC.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="USBDeviceMSC_8h_source.html">USBDeviceMSC.h</a>&gt;</code></p>
@@ -89,10 +90,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a85fc84b6a5482795ead6f3b0e1c9aeab" id="r_a85fc84b6a5482795ead6f3b0e1c9aeab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#a85fc84b6a5482795ead6f3b0e1c9aeab">~USBDeviceMSC</a> ()</td></tr>
 <tr class="separator:a85fc84b6a5482795ead6f3b0e1c9aeab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae259491194748565e6aacfcac4181e0d" id="r_ae259491194748565e6aacfcac4181e0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#ae259491194748565e6aacfcac4181e0d">setID</a> (const char *vendor, const char *product, const char *revision)</td></tr>
-<tr class="memdesc:ae259491194748565e6aacfcac4181e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional, call before <a class="el" href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">begin()</a>. Max lengths 8 / 16 / 4 characters.  <br /></td></tr>
+<tr class="memdesc:ae259491194748565e6aacfcac4181e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional, call before <a class="el" href="classUSBDeviceMSC.html#a53af7623be8d5438edf29902d2d47542">begin()</a>. Max lengths 8 / 16 / 4 characters.  <br /></td></tr>
 <tr class="separator:ae259491194748565e6aacfcac4181e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab39ede6026d204f3d1060ee3ed6e2154" id="r_ab39ede6026d204f3d1060ee3ed6e2154"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">begin</a> (<a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;dev, bool startUsb=true)</td></tr>
-<tr class="separator:ab39ede6026d204f3d1060ee3ed6e2154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53af7623be8d5438edf29902d2d47542" id="r_a53af7623be8d5438edf29902d2d47542"><td class="memTemplParams" colspan="2">template&lt;class IO &gt; </td></tr>
+<tr class="memitem:a53af7623be8d5438edf29902d2d47542"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#a53af7623be8d5438edf29902d2d47542">begin</a> (IO &amp;io, bool startUsb=true)</td></tr>
+<tr class="separator:a53af7623be8d5438edf29902d2d47542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e2da87b61d061944e448eee9914f895" id="r_a5e2da87b61d061944e448eee9914f895"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#a5e2da87b61d061944e448eee9914f895">end</a> ()</td></tr>
 <tr class="separator:a5e2da87b61d061944e448eee9914f895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39c1a514cd1f0817004e830b73e3b41e" id="r_a39c1a514cd1f0817004e830b73e3b41e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBDeviceMSC.html#a39c1a514cd1f0817004e830b73e3b41e">setWritable</a> (bool <a class="el" href="classUSBDeviceMSC.html#ab308db029ce4668e546f16d6798586bd">writable</a>)</td></tr>
@@ -122,13 +124,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a972882b14b85d34cc7b346e0c636bd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Exports a <a class="el" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou...">USBMscBlockDevice</a> to the USB host (PC). </p>
-<div class="fragment"><div class="line"><a class="code hl_class" href="classUSBMscRamDisk.html">USBMscRamDisk</a> disk(128);          <span class="comment">// 64 KB</span></div>
+<div class="textblock"><p>Exports a block driver to the USB host (PC) as a USB drive. </p>
+<p>The driver can be any class with the FatFs style block interface (disk_initialize(), disk_status(), disk_read(), disk_write(), disk_ioctl()): every fatfs::IO of TinyFATFS and every tinyext4::IO of TinyEXT4, or your own class. Only 512-byte sectors are supported.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="USBDeviceMSC_8h.html">USBDeviceMSC.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fatfs.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line">fatfs::RamIO ram(256);           <span class="comment">// 128 KB, formatted by SDClass::begin()</span></div>
 <div class="line"><a class="code hl_class" href="classUSBDeviceMSC.html">USBDeviceMSC</a> msc;</div>
-<div class="line"><span class="keywordtype">void</span> setup() { disk.<a class="code hl_function" href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">begin</a>(); msc.<a class="code hl_function" href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">begin</a>(disk); }</div>
-<div class="ttc" id="aclassUSBDeviceMSC_html"><div class="ttname"><a href="classUSBDeviceMSC.html">USBDeviceMSC</a></div><div class="ttdoc">Exports a USBMscBlockDevice to the USB host (PC).</div><div class="ttdef"><b>Definition</b> USBDeviceMSC.h:110</div></div>
-<div class="ttc" id="aclassUSBDeviceMSC_html_ab39ede6026d204f3d1060ee3ed6e2154"><div class="ttname"><a href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">USBDeviceMSC::begin</a></div><div class="ttdeci">bool begin(USBMscBlockDevice &amp;dev, bool startUsb=true)</div><div class="ttdef"><b>Definition</b> USBDeviceMSC.cpp:283</div></div>
-<div class="ttc" id="aclassUSBMscRamDisk_html"><div class="ttname"><a href="classUSBMscRamDisk.html">USBMscRamDisk</a></div><div class="ttdoc">Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost...</div><div class="ttdef"><b>Definition</b> USBDeviceMSC.h:70</div></div>
+<div class="line"><span class="keywordtype">void</span> setup() { msc.<a class="code hl_function" href="classUSBDeviceMSC.html#a53af7623be8d5438edf29902d2d47542">begin</a>(ram); }</div>
+<div class="ttc" id="aUSBDeviceMSC_8h_html"><div class="ttname"><a href="USBDeviceMSC_8h.html">USBDeviceMSC.h</a></div></div>
+<div class="ttc" id="aclassUSBDeviceMSC_html"><div class="ttname"><a href="classUSBDeviceMSC.html">USBDeviceMSC</a></div><div class="ttdoc">Exports a block driver to the USB host (PC) as a USB drive.</div><div class="ttdef"><b>Definition</b> USBDeviceMSC.h:81</div></div>
+<div class="ttc" id="aclassUSBDeviceMSC_html_a53af7623be8d5438edf29902d2d47542"><div class="ttname"><a href="classUSBDeviceMSC.html#a53af7623be8d5438edf29902d2d47542">USBDeviceMSC::begin</a></div><div class="ttdeci">bool begin(IO &amp;io, bool startUsb=true)</div><div class="ttdef"><b>Definition</b> USBDeviceMSC.h:95</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae053b73a754e835fe32382ad4d3c212e" name="ae053b73a754e835fe32382ad4d3c212e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae053b73a754e835fe32382ad4d3c212e">&#9670;&#160;</a></span>USBDeviceMSC()</h2>
@@ -262,17 +268,22 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab39ede6026d204f3d1060ee3ed6e2154" name="ab39ede6026d204f3d1060ee3ed6e2154"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab39ede6026d204f3d1060ee3ed6e2154">&#9670;&#160;</a></span>begin()</h2>
+<a id="a53af7623be8d5438edf29902d2d47542" name="a53af7623be8d5438edf29902d2d47542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53af7623be8d5438edf29902d2d47542">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class IO &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool USBDeviceMSC::begin </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;&#160;</td>
-          <td class="paramname"><em>dev</em>, </td>
+          <td class="paramtype">IO &amp;&#160;</td>
+          <td class="paramname"><em>io</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -286,8 +297,13 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Registers the MSC interface and exports <code>dev</code>. Must be called before the USB stack starts: on boards where the core starts USB itself (RP2040, SAMD, nRF52) call it first thing in setup(), before Serial.begin(); on ESP32-S2/S3 it calls USB.begin() for you unless startUsb is false (set it false if you add other USB classes and call USB.begin() yourself). </p>
+<p>Registers the MSC interface and exports <code>io</code> (which must outlive the export). Must be called before the USB stack starts: on boards where the core starts USB itself (RP2040, SAMD, nRF52) call it first thing in setup(), before Serial.begin(); on ESP32-S2/S3 it calls USB.begin() for you unless startUsb is false (set it false if you add other USB classes and call USB.begin() yourself). </p>
 
 </div>
 </div>
@@ -440,7 +456,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Optional, call before <a class="el" href="classUSBDeviceMSC.html#ab39ede6026d204f3d1060ee3ed6e2154">begin()</a>. Max lengths 8 / 16 / 4 characters. </p>
+<p>Optional, call before <a class="el" href="classUSBDeviceMSC.html#a53af7623be8d5438edf29902d2d47542">begin()</a>. Max lengths 8 / 16 / 4 characters. </p>
 
 </div>
 </div>

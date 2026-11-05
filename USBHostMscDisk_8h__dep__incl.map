@@ -1,0 +1,7 @@
+<map id="src/USBHostMscDisk.h" name="src/USBHostMscDisk.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="112,5,281,33"/>
+<area shape="rect" id="Node000002" href="$USBHostMscExt4IO_8h.html" title="TinyEXT4 driver for a USB flash drive: mount it with tinyext4::Ext4FS (ext2/3/4; whole disk,..." alt="" coords="5,81,188,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,42,116,83,113,78,164,43"/>
+<area shape="rect" id="Node000003" href="$USBHostMscFatIO_8h.html" title="TinyFATFS driver for a USB flash drive: mount it with fatfs::SDClass (FAT12/16/32,..." alt="" coords="212,81,384,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,40,283,81,277,80,226,45"/>
+</map>

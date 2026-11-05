@@ -1,5 +1,0 @@
-<map id="USBMscNbdBlockDevice" name="USBMscNbdBlockDevice">
-<area shape="rect" id="Node000001" title="USBMscBlockDevice on top of an nbd::NBDClient (512&#45;byte blocks)." alt="" coords="5,81,187,109"/>
-<area shape="rect" id="Node000002" href="$classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou..." alt="" coords="18,5,174,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,47,98,82,94,80,94,51"/>
-</map>
