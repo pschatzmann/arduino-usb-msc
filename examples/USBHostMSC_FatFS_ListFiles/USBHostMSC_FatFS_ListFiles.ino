@@ -1,8 +1,8 @@
 /*
- * USBMscFatFS_ListFiles
+ * USBHostMSC_FatFS_ListFiles
  *
  * Mounts a FAT-formatted USB flash drive and recursively lists its
- * contents. Unlike USBMscFS_ListFiles (which uses USBMscAutoFS and so
+ * contents. Unlike USBHostMSC_AutoFS_ListFiles (which uses USBMscAutoFS and so
  * pulls in both backends), this sketch only ever references USBMscFatFS,
  * so the ext4 backend never gets linked into the firmware image.
  *
@@ -81,7 +81,7 @@ void setup() {
   while (!SerialOut) {
     delay(10);
   }
-  SerialOut.println("USBMscFatFS_ListFiles: waiting for a USB drive...");
+  SerialOut.println("USBHostMSC_FatFS_ListFiles: waiting for a USB drive...");
 
   msc.onMount(onMount);
   msc.onUnmount(onUnmount);

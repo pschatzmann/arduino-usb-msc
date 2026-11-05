@@ -1,3 +1,5 @@
+#include "../USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscFsAdapterRp2040.h"
 
 #if defined(ARDUINO_ARCH_RP2040)
@@ -206,3 +208,5 @@ bool RpFSImpl::stat(const char *path, fs::FSStat *st) {
 } // namespace usbmscfs
 
 #endif
+
+#endif // USBHOSTMSC_COMPILE

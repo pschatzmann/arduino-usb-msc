@@ -1,5 +1,5 @@
 /*
- * usb-host-msc
+ * usb-msc
  *
  * Thin Arduino wrapper around TinyUSB's host-mode Mass Storage Class
  * driver (tuh_msc_*), giving blocking, SCSI-block-level access to a USB
@@ -59,13 +59,13 @@
 
 #if defined(ARDUINO_USB_MODE) && ARDUINO_USB_MODE == 1
 #warning \
-    "usb-host-msc: with Tools > USB Mode > 'Hardware CDC and JTAG' the core " \
+    "usb-msc: with Tools > USB Mode > 'Hardware CDC and JTAG' the core " \
     "does not run TinyUSB, so USB host will not work. Select 'USB-OTG (TinyUSB)'."
 #endif
 #else
 #if !__has_include(<Adafruit_TinyUSB.h>)
 #error \
-    "usb-host-msc needs the 'Adafruit TinyUSB Library' on this board " \
+    "usb-msc needs the 'Adafruit TinyUSB Library' on this board " \
     "(install it from the Library Manager). It is only NOT needed on " \
     "ESP32-S2/S3 (arduino-esp32 core TinyUSB) and RP2040 (bundled with core)."
 #endif
@@ -80,23 +80,23 @@
 // mode there is gated purely by CFG_TUH_ENABLED/CFG_TUH_MSC, checked below).
 #if defined(ARDUINO_ARCH_RP2040) && !defined(USE_TINYUSB_HOST)
 #error \
-    "usb-host-msc requires USB Host mode. On RP2040 select " \
+    "usb-msc requires USB Host mode. On RP2040 select " \
     "Tools > USB Stack > \"Adafruit TinyUSB Host (native)\"."
 #endif
 
 #if !(CFG_TUH_ENABLED && CFG_TUH_MSC)
 #if defined(ARDUINO_ARCH_STM32)
 #error \
-    "usb-host-msc requires CFG_TUH_ENABLED and CFG_TUH_MSC to be set to 1. " \
+    "usb-msc requires CFG_TUH_ENABLED and CFG_TUH_MSC to be set to 1. " \
     "On STM32 this needs a build flag (-DCFG_TUH_ENABLED=1) plus a small " \
     "patch to Adafruit_TinyUSB_Arduino -- see docs/STM32.md."
 #elif USBHOSTMSC_ESP32_CORE
 #error \
-    "usb-host-msc requires TinyUSB host mode. On ESP32-S2/S3 select " \
+    "usb-msc requires TinyUSB host mode. On ESP32-S2/S3 select " \
     "Tools > USB Mode > \"USB-OTG (TinyUSB)\"."
 #else
 #error \
-    "usb-host-msc requires CFG_TUH_ENABLED and CFG_TUH_MSC to be set to 1 " \
+    "usb-msc requires CFG_TUH_ENABLED and CFG_TUH_MSC to be set to 1 " \
     "(Adafruit TinyUSB Library with host mode enabled -- see " \
     "docs/BOARDS.md and docs/ESP32_NATIVE.md)."
 #endif

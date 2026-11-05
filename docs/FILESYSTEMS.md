@@ -13,8 +13,8 @@ with STM32SD if a sketch also uses an actual SD card) instead of
 `fs::File`, and `fs()` returns a reference to itself instead of a
 separate `fs::FS`. The method names and call shape
 (`fatFs.fs().open(path, mode)`) are the same either way -- see
-`examples/USBMscFatFS_ListFiles`, `examples/USBMscFS_Ext4ReadFile` and
-`examples/USBMscFS_Ext4WriteFile`, which all build unchanged on all
+`examples/USBHostMSC_FatFS_ListFiles`, `examples/USBHostMSC_Ext4ReadFile` and
+`examples/USBHostMSC_Ext4WriteFile`, which all build unchanged on all
 three platforms via a small per-platform type alias.
 
 `USBMscAutoFS` isn't ported to STM32 yet: it needs `USBMscFatFS::fs()`
@@ -91,9 +91,9 @@ USBMscAutoFS<USBMscExt4FS> mscFsRW;  // FAT (r/w) + ext4 (r/w)
 the read-only ext4 class for the same reason `USBMscAutoFS` doesn't just
 always use `USBMscExt4FS`: auto-mounting whatever drive happens to be
 plugged in shouldn't risk writing to it unless you say so by naming
-`USBMscExt4FS` explicitly. See `examples/USBMscFS_ListFiles`,
-`examples/USBMscFatFS_ListFiles`, `examples/USBMscFS_Ext4ReadFile` and
-`examples/USBMscFS_Ext4WriteFile`.
+`USBMscExt4FS` explicitly. See `examples/USBHostMSC_AutoFS_ListFiles`,
+`examples/USBHostMSC_FatFS_ListFiles`, `examples/USBHostMSC_Ext4ReadFile` and
+`examples/USBHostMSC_Ext4WriteFile`.
 
 **Partition tables:** `USBMscFatFS` supports MBR-partitioned and
 unpartitioned (superfloppy) media only. GPT disks (typically >2 TB, or many

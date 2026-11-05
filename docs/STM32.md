@@ -63,7 +63,7 @@ with STM32SD -- e.g. an actual SD card -- in the same sketch) instead of
 `fs::File`. `USBMscFatFS::fs()` returns `*this`, so `fatFs.fs().open(...)`
 still works the same way it does on ESP32/RP2040. See
 [FILESYSTEMS.md](FILESYSTEMS.md) for the full API and
-`examples/USBMscFatFS_ListFiles` (works unchanged across all three
+`examples/USBHostMSC_FatFS_ListFiles` (works unchanged across all three
 platforms via a small type alias).
 
 `USBMscExt4FS`/`USBMscExt4FSReadOnly` work the same way:

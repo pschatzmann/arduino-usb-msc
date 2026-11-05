@@ -32,6 +32,7 @@ COMPILE_TIMEOUT=300 # seconds, per example/board combination
 # ---------------------------------------------------------------------------
 BOARDS=(
   "rp2040|rp2040:rp2040:rpipico:usbstack=tinyusb_host|"
+  "rp2040dev|rp2040:rp2040:rpipico:usbstack=tinyusb|"
   "esp32s3|esp32:esp32:esp32s3:USBMode=default|"
   "stm32|STMicroelectronics:stm32:GenF4:pnum=BLACKPILL_F411CE|--build-property compiler.c.extra_flags=-DCFG_TUH_ENABLED=1 --build-property compiler.cpp.extra_flags=-DCFG_TUH_ENABLED=1"
   "esp32|esp32:esp32:esp32|"
@@ -42,7 +43,7 @@ BOARDS=(
 # Format: "board_key:ExampleName" -- one reason string per entry.
 # ---------------------------------------------------------------------------
 declare -A SKIP
-SKIP["stm32:USBMscFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see docs/STM32.md)"
+SKIP["stm32:USBHostMSC_AutoFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see docs/STM32.md)"
 
 # Classic ESP32 has no native USB peripheral, so every example except
 # USBHostMSC_MAX3421E_Info -- which uses the Adafruit_USBH_Host/MAX3421E
@@ -52,11 +53,11 @@ SKIP["stm32:USBMscFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see d
 MAX3421E_REASON="classic ESP32 has no native USB -- needs the MAX3421E constructor (see USBHostMSC_MAX3421E_Info, docs/MAX3421E.md)"
 SKIP["esp32:USBHostMSC_Info"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_BlockRW"]="$MAX3421E_REASON"
-SKIP["esp32:USBMscFatFS_ListFiles"]="$MAX3421E_REASON"
-SKIP["esp32:USBMscFS_ListFiles"]="$MAX3421E_REASON"
-SKIP["esp32:USBMscFS_Ext4ReadFile"]="$MAX3421E_REASON"
-SKIP["esp32:USBMscFS_Ext4WriteFile"]="$MAX3421E_REASON"
-SKIP["esp32:USBMscFSPool_HubListFiles"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_FatFS_ListFiles"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_AutoFS_ListFiles"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_Ext4ReadFile"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_Ext4WriteFile"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_FSPool_HubListFiles"]="$MAX3421E_REASON"
 
 # The reverse: USBHostMSC_MAX3421E_Info uses the Adafruit_USBH_Host
 # constructor, which only exists when CFG_TUH_MAX3421 is on -- not the
@@ -65,6 +66,21 @@ NATIVE_REASON="CFG_TUH_MAX3421 is off by default here -- the MAX3421E constructo
 SKIP["rp2040:USBHostMSC_MAX3421E_Info"]="$NATIVE_REASON"
 SKIP["esp32s3:USBHostMSC_MAX3421E_Info"]="$NATIVE_REASON"
 SKIP["stm32:USBHostMSC_MAX3421E_Info"]="$NATIVE_REASON"
+
+# USB host and device mode need different USB stacks on RP2040, so the device
+# examples (USBDeviceMSC_*) build only on rp2040dev (device stack) and
+# esp32s3 (the core has both); the host examples (USBHostMSC_*) skip rp2040dev.
+for ex_dir in "$EXAMPLES_DIR"/*/; do
+  ex="$(basename "$ex_dir")"
+  case "$ex" in
+    USBDeviceMSC_*)
+      for b in rp2040 stm32 esp32; do
+        SKIP["$b:$ex"]="device-mode example; needs a device-capable USB stack (see docs/DEVICE_API.md)"
+      done ;;
+    *)
+      SKIP["rp2040dev:$ex"]="host-mode example; rp2040dev builds the USB device stack" ;;
+  esac
+done
 
 # ---------------------------------------------------------------------------
 # Argument parsing

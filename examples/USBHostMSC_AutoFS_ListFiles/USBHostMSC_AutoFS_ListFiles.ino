@@ -1,5 +1,5 @@
 /*
- * USBMscFS_ListFiles
+ * USBHostMSC_AutoFS_ListFiles
  *
  * Mounts a USB flash drive's filesystem (tries FAT first, then ext2/3/4 --
  * see USBMscAutoFS) and recursively lists its contents.
@@ -9,7 +9,7 @@
  * There's no separate build flag for backend selection: this example
  * pulls in both the FAT and ext4 backends because it
  * references USBMscAutoFS. Use USBMscFatFS or USBMscExt4FS directly (see
- * USBMscFS_Ext4ReadFile) to keep the other one out of your firmware.
+ * USBHostMSC_Ext4ReadFile) to keep the other one out of your firmware.
  *
  * Board setup: see USBHostMSC_Info example.
  */
@@ -76,7 +76,7 @@ void setup() {
   while (!SerialOut) {
     delay(10);
   }
-  SerialOut.println("USBMscFS_ListFiles: waiting for a USB drive...");
+  SerialOut.println("USBHostMSC_AutoFS_ListFiles: waiting for a USB drive...");
 
   msc.onMount(onMount);
   msc.onUnmount(onUnmount);

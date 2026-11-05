@@ -1,3 +1,5 @@
+#include "USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscPartition.h"
 
 #include <string.h>
@@ -110,3 +112,5 @@ bool USBMscPartition::writeBlocks(uint32_t lba, const void *buffer,
   }
   return _msc->writeBlocks(_dev_addr, _lba_start + lba, buffer, count);
 }
+
+#endif // USBHOSTMSC_COMPILE

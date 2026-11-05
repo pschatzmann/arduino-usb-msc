@@ -42,7 +42,7 @@ void setup() {
 void loop() { msc.task(); }
 ```
 
-See `examples/USBMscFSPool_HubListFiles`.
+See `examples/USBHostMSC_FSPool_HubListFiles`.
 
 Size `MaxDevices` to how many devices you actually expect (a typical hub
 has 4 ports) -- every slot's RAM/flash cost (FatFs buffers, TinyEXT4

@@ -12,7 +12,7 @@ index b3fa1461..013951bc 100644
 +// S2/S3/P4 have a native USB-OTG (DWC2) peripheral -- use it directly by
 +// default. Every other ESP32 variant (classic ESP32, C3, C6, H2, ...) has
 +// no USB peripheral at all, so host mode there only works via an external
-+// MAX3421E host-shield chip wired over SPI (see usb-host-msc's
++// MAX3421E host-shield chip wired over SPI (see usb-msc's
 +// extras/ESP32_NATIVE.md). Override with -DCFG_TUH_MAX3421=1 to force
 +// MAX3421E mode on a native-OTG chip too (e.g. you actually wired one up).
 +#ifndef CFG_TUH_MAX3421

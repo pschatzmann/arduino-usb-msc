@@ -1,8 +1,8 @@
 /*
- * USBMscFS_Ext4WriteFile
+ * USBHostMSC_Ext4WriteFile
  *
  * DESTRUCTIVE TEST: mounts an ext2/3/4-formatted USB flash drive
- * read/write and writes a line to /usb-host-msc-test.txt (creating or
+ * read/write and writes a line to /usb-msc-test.txt (creating or
  * appending to it), then reads the file back and prints its contents.
  * Only run this against a drive you don't mind modifying.
  *
@@ -10,7 +10,7 @@
  * e2fsck on Linux, and ext2/ext3 (or a volume needing fsck) mount
  * read-only even here -- check readOnly() (see docs/FILESYSTEMS.md). If
  * you only need to read, prefer USBMscExt4FSReadOnly (see
- * USBMscFS_Ext4ReadFile).
+ * USBHostMSC_Ext4ReadFile).
  *
  * Board setup: see USBHostMSC_Info example.
  */
@@ -37,7 +37,7 @@ using UsbFsFile = File;
 USBMscExt4FS extFs;
 USBHostMSC msc(&extFs);
 
-const char *kPath = "/usb-host-msc-test.txt";
+const char *kPath = "/usb-msc-test.txt";
 
 void onMount(uint8_t dev_addr) {
   SerialOut.printf("Mass storage device mounted: dev_addr=%u\r\n", dev_addr);
@@ -55,7 +55,7 @@ void onMount(uint8_t dev_addr) {
     SerialOut.println("  open for append failed");
     return;
   }
-  wf.printf("hello from usb-host-msc at millis()=%lu\r\n", (unsigned long)millis());
+  wf.printf("hello from usb-msc at millis()=%lu\r\n", (unsigned long)millis());
   wf.close();
 
   SerialOut.println("Reading it back:");
@@ -83,7 +83,7 @@ void setup() {
     delay(10);
   }
   SerialOut.println(
-      "USBMscFS_Ext4WriteFile: plug in a drive you can afford to modify.");
+      "USBHostMSC_Ext4WriteFile: plug in a drive you can afford to modify.");
 
   msc.onMount(onMount);
   msc.onUnmount(onUnmount);

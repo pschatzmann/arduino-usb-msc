@@ -1,5 +1,12 @@
 # Supported targets and board configuration
 
+This library has two modes: **host** (`USBHostMSC`: the board reads a USB
+stick) and **device** (`USBDeviceMSC`: the board is a USB stick). They use
+the board's USB controller in opposite roles, so a board picks one per
+firmware, unless it has a second controller. The tables and sections below
+are about **host mode**; device mode is covered in
+[Device mode](#device-mode) at the end.
+
 Which TinyUSB is used: ESP32-S2/S3 -> the one built into the arduino-esp32
 core; RP2040 -> the one bundled with the RP2040 core; everything else
 (STM32, MAX3421E boards, ESP32-P4) -> the *Adafruit TinyUSB Library* from
@@ -49,3 +56,29 @@ Boards with a single USB port: see [SINGLE_PORT.md](SINGLE_PORT.md) for
 powering the board, feeding the drive and keeping `Serial`.
 
 The patches themselves live in [../extras/](../extras/).
+
+## Device mode
+
+`USBDeviceMSC` needs the USB **device** stack and no patches:
+
+| Board | Core | Setting | Uses |
+|---|---|---|---|
+| ESP32-S2/S3 | `esp32:esp32` >= 3.x | Tools > USB Mode > **"USB-OTG (TinyUSB)"** | the core's `USBMSC` (nothing to install) |
+| RP2040 | earlephilhower `rp2040:rp2040` | Tools > USB Stack > **"Adafruit TinyUSB"** (not "...Host (native)") | `Adafruit_USBD_MSC` |
+| other Adafruit TinyUSB boards (SAMD21/51, nRF52, STM32, ...) | their usual core | USB Stack: TinyUSB | `Adafruit_USBD_MSC`; compiles, not tested here |
+
+Notes:
+
+- **Host and device at the same time** only works with two controllers: e.g.
+  the native port as device plus a MAX3421E chip ([MAX3421E.md](MAX3421E.md))
+  as host. On RP2040 the "Adafruit TinyUSB Host (native)" stack has no
+  device side; the library's host code is compiled out when the device
+  stack is selected and vice versa (see `src/USBMsc_config.h`; define
+  `USBHOSTMSC_DISABLE` / `USBDEVMSC_DISABLE` to force one side off on
+  boards where this cannot be detected).
+- **ESP32-S2/S3** use one USB-OTG controller for either role; the mode is
+  chosen by the sketch, `USBDeviceMSC::begin()` starts `USB`.
+- With device mode the native USB port is the connection to the PC, so
+  `Serial` over USB (`CDC`) and flashing work as usual, unlike in host
+  mode ([SINGLE_PORT.md](SINGLE_PORT.md) is host-only).
+- Details of the API: [DEVICE_API.md](DEVICE_API.md).

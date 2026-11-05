@@ -1,3 +1,5 @@
+#include "USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscFatFS.h"
 
 #if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040)
@@ -145,3 +147,5 @@ bool USBMscFatFS::rmdir(const char *path) {
 }
 
 #endif // ARDUINO_ARCH_STM32
+
+#endif // USBHOSTMSC_COMPILE

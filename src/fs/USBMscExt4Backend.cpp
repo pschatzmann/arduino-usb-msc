@@ -1,3 +1,5 @@
+#include "../USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscExt4Backend.h"
 
 #include <string.h>
@@ -194,3 +196,5 @@ bool Ext4Backend::mkdir(const char *path) { return _impl->fs.mkdir(path); }
 bool Ext4Backend::rmdir(const char *path) { return _impl->fs.rmdir(path); }
 
 } // namespace usbmscfs
+
+#endif // USBHOSTMSC_COMPILE

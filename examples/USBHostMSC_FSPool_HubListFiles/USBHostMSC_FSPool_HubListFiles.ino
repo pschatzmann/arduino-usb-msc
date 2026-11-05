@@ -1,5 +1,5 @@
 /*
- * USBMscFSPool_HubListFiles
+ * USBHostMSC_FSPool_HubListFiles
  *
  * Plug a USB hub into the host port, then plug up to 4 FAT-formatted
  * flash drives into the hub. Each one gets mounted into its own slot and
@@ -93,7 +93,7 @@ void setup() {
     delay(10);
   }
   SerialOut.println(
-      "USBMscFSPool_HubListFiles: plug in a hub, then plug in some drives...");
+      "USBHostMSC_FSPool_HubListFiles: plug in a hub, then plug in some drives...");
 
   msc.onMount(onMount);
   msc.onUnmount(onUnmount);

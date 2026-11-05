@@ -1,4 +1,4 @@
-# One USB port: drive, power and Serial
+# One USB port: drive, power and Serial (host mode)
 
 In host mode the board's native USB port talks to the **drive**, so it can
 no longer be used for the PC connection. That raises three questions:

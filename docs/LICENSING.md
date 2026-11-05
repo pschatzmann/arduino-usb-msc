@@ -1,7 +1,7 @@
 # Licensing and dependencies
 
-usb-host-msc's own code (`USBHostMSC`, `USBMscPartition`, the filesystem
-backend abstraction, the STM32 port) is [MIT](../LICENSE).
+usb-msc's own code (`USBHostMSC`, `USBDeviceMSC`, `USBMscRamDisk`,
+`USBMscPartition`, the filesystem backend abstraction, the STM32 port) is [MIT](../LICENSE).
 
 Filesystem support comes from two header-only libraries, installed as
 normal Library Manager dependencies (`depends=` in `library.properties`):
@@ -15,3 +15,8 @@ normal Library Manager dependencies (`depends=` in `library.properties`):
 
 Only the classes your sketch references are linked into the firmware.
 Nothing in the dependency chain is copyleft.
+
+Device mode builds on the USB device MSC class of the platform (the
+arduino-esp32 core's `USBMSC`, or `Adafruit_USBD_MSC` from the Adafruit
+TinyUSB Library, MIT). `USBMscSdCard` additionally needs the SdFat library
+(MIT), only when your sketch includes `USBMscSdCard.h`.

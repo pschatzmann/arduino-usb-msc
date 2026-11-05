@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map for usb-host-msc
+# Syntax Coloring Map for usb-msc
 #######################################
 
 #######################################
@@ -7,6 +7,10 @@
 #######################################
 
 USBHostMSC	KEYWORD1
+USBDeviceMSC	KEYWORD1
+USBMscBlockDevice	KEYWORD1
+USBMscRamDisk	KEYWORD1
+USBMscSdCard	KEYWORD1
 MSCInquiry	KEYWORD1
 USBMscFSBackend	KEYWORD1
 USBMscFatFS	KEYWORD1
@@ -38,6 +42,15 @@ writeBlocks	KEYWORD2
 onMount	KEYWORD2
 onUnmount	KEYWORD2
 mounted	KEYWORD2
+setID	KEYWORD2
+setWritable	KEYWORD2
+mediaPresent	KEYWORD2
+hostActive	KEYWORD2
+written	KEYWORD2
+clearWritten	KEYWORD2
+format	KEYWORD2
+addFile	KEYWORD2
+flush	KEYWORD2
 isFat	KEYWORD2
 isExt4	KEYWORD2
 fs	KEYWORD2

@@ -10,7 +10,7 @@ index 1fcafb27..545cdee8 100644
 +// Was "&& CFG_TUH_MSC" -- this file only uses tuh_cdc_* APIs, which only
 +// exist when CFG_TUH_CDC is on; MSC has nothing to do with it. That
 +// mismatch was harmless while every port always set both together, but
-+// broke STM32 host support (usb-host-msc enables MSC without CDC, since
++// broke STM32 host support (usb-msc enables MSC without CDC, since
 +// this class's default HardwareSerial() base isn't available there).
 +#if CFG_TUH_ENABLED && CFG_TUH_CDC
  
@@ -33,7 +33,7 @@ index 399f2bcb..e296ec2e 100644
 +// for device role (ISR, TinyUSB_Port_InitDevice) or assumes it's safe to
 +// pump tud_task() (yield()/serialEventRun()), so it has to stay out of the
 +// build when CFG_TUH_ENABLED claims that same peripheral for host role
-+// instead (see usb-host-msc's STM32 port) -- most importantly, so its
++// instead (see usb-msc's STM32 port) -- most importantly, so its
 +// OTG_FS/HS interrupt vector definition doesn't collide with the host
 +// port's.
 +#if !CFG_TUH_ENABLED
@@ -61,7 +61,7 @@ index ef15c845..54cb8a60 100644
 -#define CFG_TUH_ENABLED 0 // disable for now
 +// Unsupported/untested upstream (hence the #ifndef rather than a plain
 +// #define): opt in per-build with -DCFG_TUH_ENABLED=1 (see
-+// https://github.com/pschatzmann/usb-host-msc). Left off by default so
++// https://github.com/pschatzmann/arduino-usb-msc). Left off by default so
 +// every other STM32 sketch using this library keeps working unchanged.
 +#ifndef CFG_TUH_ENABLED
 +#define CFG_TUH_ENABLED 0
@@ -81,7 +81,7 @@ index ef15c845..54cb8a60 100644
 +// Not CFG_TUH_CDC: Adafruit_USBH_CDC (the Arduino wrapper CFG_TUH_CDC=1
 +// pulls in) subclasses HardwareSerial with a default constructor that
 +// STM32duino's HardwareSerial doesn't have (it requires pin arguments) --
-+// untested combination upstream. usb-host-msc only needs CFG_TUH_MSC.
++// untested combination upstream. usb-msc only needs CFG_TUH_MSC.
 +
 +#endif // CFG_TUH_ENABLED
  

@@ -1,5 +1,5 @@
 /*
- * USBMscFS_Ext4ReadFile
+ * USBHostMSC_Ext4ReadFile
  *
  * Mounts an ext2/3/4-formatted USB flash drive read-only and prints the
  * contents of /hello.txt (create that file from a Linux machine first).
@@ -68,7 +68,7 @@ void setup() {
   while (!SerialOut) {
     delay(10);
   }
-  SerialOut.println("USBMscFS_Ext4ReadFile: waiting for a USB drive...");
+  SerialOut.println("USBHostMSC_Ext4ReadFile: waiting for a USB drive...");
 
   msc.onMount(onMount);
   msc.onUnmount(onUnmount);

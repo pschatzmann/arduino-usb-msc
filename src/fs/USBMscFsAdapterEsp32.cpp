@@ -1,3 +1,5 @@
+#include "../USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscFsAdapterEsp32.h"
 
 #if defined(ARDUINO_ARCH_ESP32)
@@ -156,3 +158,5 @@ fs::FileImplPtr EspFSImpl::open(const char *path, const char *mode,
 } // namespace usbmscfs
 
 #endif
+
+#endif // USBHOSTMSC_COMPILE

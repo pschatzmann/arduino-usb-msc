@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-# Desktop (Linux/macOS) unit tests for the filesystem layer of usb-host-msc.
+# Desktop (Linux/macOS) unit tests for the filesystem layer of usb-msc.
 #
 #   cmake -B build && cmake --build build && ctest --test-dir build --output-on-failure
 #
@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.16)
 # of USBHostMSC, so they can be exercised with real mkfs-generated disk
 # images, under AddressSanitizer. Needs: dosfstools, exfatprogs,
 # e2fsprogs, mtools, gdisk (sgdisk), util-linux (sfdisk).
-project(usb_host_msc_tests LANGUAGES CXX)
+project(usb_msc_tests LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

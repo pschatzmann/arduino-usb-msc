@@ -1,3 +1,5 @@
+#include "../USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBMscFatBackend.h"
 
 // TinyFATFS (library dependency) is header-only; this is the one and only
@@ -245,3 +247,5 @@ bool FatBackend::rmdir(const char *path) {
 }
 
 } // namespace usbmscfs
+
+#endif // USBHOSTMSC_COMPILE

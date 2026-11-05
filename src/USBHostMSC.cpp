@@ -1,3 +1,5 @@
+#include "USBMsc_config.h"
+#if USBHOSTMSC_COMPILE
 #include "USBHostMSC.h"
 
 #include <string.h>
@@ -488,3 +490,5 @@ void tuh_msc_umount_cb(uint8_t dev_addr) {
 }
 
 } // extern "C"
+
+#endif // USBHOSTMSC_COMPILE
