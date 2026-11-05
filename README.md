@@ -15,7 +15,7 @@ A board's USB port does one role at a time; pick it in the board's USB menu.
 ## Documentation
 
 - [Class documentation (Doxygen)](https://pschatzmann.github.io/arduino-usb-msc/annotated.html)
-- [Installation and board settings](https://github.com/pschatzmann/arduino-usb-msc/wiki/INSTALLATION) -- [supported boards](https://github.com/pschatzmann/arduino-usb-msc/wiki/BOARDS)
+- [Installation and supported boards](https://github.com/pschatzmann/arduino-usb-msc/wiki/BOARDS)
 - [Host vs. device overview](https://github.com/pschatzmann/arduino-usb-msc/wiki/OVERVIEW)
 - Host mode: [quick start](https://github.com/pschatzmann/arduino-usb-msc/wiki/HOST_QUICKSTART), [block API](https://github.com/pschatzmann/arduino-usb-msc/wiki/BLOCK_API), [filesystems](https://github.com/pschatzmann/arduino-usb-msc/wiki/FILESYSTEMS), [hubs](https://github.com/pschatzmann/arduino-usb-msc/wiki/MULTIPLE_DEVICES), [ESP32](https://github.com/pschatzmann/arduino-usb-msc/wiki/ESP32_NATIVE), [STM32](https://github.com/pschatzmann/arduino-usb-msc/wiki/STM32), [MAX3421E](https://github.com/pschatzmann/arduino-usb-msc/wiki/MAX3421E), [single-port wiring](https://github.com/pschatzmann/arduino-usb-msc/wiki/SINGLE_PORT)
 - Device mode: [quick start](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_QUICKSTART), [API](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_API)
