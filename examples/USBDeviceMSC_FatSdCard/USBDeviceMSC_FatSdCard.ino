@@ -8,7 +8,7 @@
  * While the PC has the card mounted the MCU must not touch the files on it
  * (both sides cache and would corrupt each other). To access the card from
  * the sketch, call msc.mediaPresent(false) first ("eject"), mount it with
- * fatfs::SDClass, end() it, and call msc.mediaPresent(true) afterwards.
+ * SDClass, end() it, and call msc.mediaPresent(true) afterwards.
  *
  * Wiring: SD card on the default SPI pins, chip select = SD_CS below.
  * ESP32-S2/S3: Tools > USB Mode > "USB-OTG (TinyUSB)".
@@ -23,7 +23,7 @@
 #define SD_CS SS
 #endif
 
-fatfs::ArduinoSpiIO card(SD_CS, SPI);
+ArduinoSpiIO card(SD_CS, SPI);
 USBDeviceMSC msc;
 
 void setup() {

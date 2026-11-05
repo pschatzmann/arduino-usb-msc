@@ -15,13 +15,13 @@
 #include "USBDeviceMSC.h"
 #include "fatfs.h"
 
-fatfs::RamIO ram(256); // 256 sectors * 512 bytes = 128 KB
+RamIO ram(256); // 256 sectors * 512 bytes = 128 KB
 USBDeviceMSC msc;
 
 void setup() {
-  fatfs::SDClass fat;
+  SDClass fat;
   if (fat.begin(ram)) { // RamIO formats the volume when it is mounted
-    fatfs::File f = fat.open("/HELLO.TXT", FA_WRITE | FA_CREATE_ALWAYS);
+    File f = fat.open("/HELLO.TXT", FA_WRITE | FA_CREATE_ALWAYS);
     f.print("Hello from the board!\r\n");
     f.close();
     fat.end();

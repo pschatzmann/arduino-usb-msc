@@ -4,7 +4,7 @@
  * Plug a USB hub into the host port, then plug up to 4 FAT-formatted flash
  * drives into the hub. Each one is mounted into its own slot -- a
  * USBHostMscFatIO bound to the drive's USB address plus its own
- * fatfs::SDClass -- and listed independently.
+ * SDClass -- and listed independently.
  *
  * A hub adds power draw on top of the drives themselves; whether your
  * board's host port can supply enough current for a bus-powered hub plus
@@ -27,17 +27,17 @@ USBHostMSC msc;
 struct Slot {
   uint8_t dev_addr = 0; // 0 = free
   USBHostMscFatIO io;
-  fatfs::SDClass fat;
+  SDClass fat;
 };
 const int kSlots = 4;
 Slot slots[kSlots];
 
-void listDir(fatfs::SDClass &fat, const char *dirname, uint8_t depth) {
-  fatfs::File dir = fat.open(dirname);
+void listDir(SDClass &fat, const char *dirname, uint8_t depth) {
+  File dir = fat.open(dirname);
   if (!dir || !dir.isDirectory()) {
     return;
   }
-  for (fatfs::File entry = dir.openNextFile(); entry; entry = dir.openNextFile()) {
+  for (File entry = dir.openNextFile(); entry; entry = dir.openNextFile()) {
     for (uint8_t i = 0; i < depth; i++) {
       SerialOut.print("  ");
     }

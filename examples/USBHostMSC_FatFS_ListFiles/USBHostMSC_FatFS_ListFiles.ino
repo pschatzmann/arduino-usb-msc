@@ -3,13 +3,13 @@
  *
  * Mounts a FAT12/16/32 or exFAT formatted USB flash drive with TinyFATFS and
  * recursively lists its contents. Works the same on every supported board
- * (ESP32-S2/S3, RP2040, STM32): fatfs::SDClass / fatfs::File have the API of
+ * (ESP32-S2/S3, RP2040, STM32): SDClass / File have the API of
  * the Arduino SD library.
  *
  * USBHostMscFatIO is the TinyFATFS driver for the drive; unplugging is
  * handled (open files fail, the next access after re-plugging mounts the
  * new drive). On ESP32 / RP2040 you can also get an fs::FS with
- * fatfs::ArduinoFS -- see USBHostMSC_AutoFS_ListFiles.
+ * ArduinoFS -- see USBHostMSC_AutoFS_ListFiles.
  *
  * Board setup: see USBHostMSC_Info example.
  */
@@ -24,14 +24,14 @@
 
 USBHostMSC msc;
 USBHostMscFatIO usbIO(msc); // the first drive that is plugged in
-fatfs::SDClass usbFat;
+SDClass usbFat;
 
 void listDir(const char *dirname, uint8_t depth) {
-  fatfs::File dir = usbFat.open(dirname);
+  File dir = usbFat.open(dirname);
   if (!dir || !dir.isDirectory()) {
     return;
   }
-  for (fatfs::File entry = dir.openNextFile(); entry; entry = dir.openNextFile()) {
+  for (File entry = dir.openNextFile(); entry; entry = dir.openNextFile()) {
     for (uint8_t i = 0; i < depth; i++) {
       SerialOut.print("  ");
     }
