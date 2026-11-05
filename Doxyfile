@@ -1,0 +1,17 @@
+PROJECT_NAME           = "arduino-usb-msc"
+PROJECT_BRIEF          = "USB Mass Storage host and device mode for Arduino"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = README.md src docs
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.c *.cpp *.h *.md
+RECURSIVE              = YES
+EXCLUDE                = docs/html
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+WARN_IF_UNDOCUMENTED   = NO
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+HAVE_DOT               = YES
+CALL_GRAPH             = NO
+QUIET                  = YES

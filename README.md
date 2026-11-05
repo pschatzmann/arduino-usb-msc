@@ -14,6 +14,7 @@ A board's USB port does one role at a time; pick it in the board's USB menu.
 
 ## Documentation
 
+- [Class documentation (Doxygen)](https://pschatzmann.github.io/arduino-usb-msc/annotated.html)
 - [Installation and board settings](docs/INSTALLATION.md) -- [supported boards](docs/BOARDS.md)
 - [Host vs. device overview](docs/OVERVIEW.md)
 - Host mode: [quick start](docs/HOST_QUICKSTART.md), [block API](docs/BLOCK_API.md), [filesystems](docs/FILESYSTEMS.md), [hubs](docs/MULTIPLE_DEVICES.md), [ESP32](docs/ESP32_NATIVE.md), [STM32](docs/STM32.md), [MAX3421E](docs/MAX3421E.md), [single-port wiring](docs/SINGLE_PORT.md)
