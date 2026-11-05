@@ -12,6 +12,59 @@ USB **Mass Storage** for Arduino -- the "USB stick" protocol, in both directions
 
 A board's USB port does one role at a time; pick it in the board's USB menu.
 
+This library does the USB part only. The filesystems are
+[TinyFATFS](https://github.com/pschatzmann/TinyFATFS) (FAT12/16/32, exFAT)
+and [TinyEXT4](https://github.com/pschatzmann/TinyEXT4) (ext2/3/4), used
+with their own API. Both directions meet at their block driver interface:
+
+- **Host:** `USBHostMscFatIO` / `USBHostMscExt4IO` are block drivers for a
+  plugged-in USB drive, like the SD card drivers of those libraries.
+- **Device:** `USBDeviceMSC` exports any block driver of those libraries
+  (RAM disk, SD card, NBD export, ...) or your own to the PC.
+
+```cpp
+#include "USBHostMSC.h"
+#include "USBHostMscFatIO.h"
+
+USBHostMSC msc;
+USBHostMscFatIO usbIO(msc);   // the plugged-in drive
+fatfs::SDClass usbFat;        // TinyFATFS
+
+void onMount(uint8_t) {
+  if (usbFat.begin(usbIO)) {
+    fatfs::File f = usbFat.open("/hello.txt");
+    while (f.available()) Serial.write(f.read());
+  }
+}
+void onUnmount(uint8_t) { usbFat.end(); }
+
+void setup() {
+  msc.onMount(onMount);
+  msc.onUnmount(onUnmount);
+  msc.begin();
+}
+void loop() { msc.task(); }
+```
+
+On ESP32 and RP2040, `fatfs::ArduinoFS` / `tinyext4::ArduinoFS` turn a
+mounted volume into an Arduino `fs::FS`.
+
+## Upgrading from 0.1
+
+Version 0.2 removed this library's own filesystem layer in favour of the
+APIs of TinyFATFS and TinyEXT4:
+
+| 0.1 | 0.2 |
+|---|---|
+| `USBMscFatFS fatFs; USBHostMSC msc(&fatFs);` | `USBHostMSC msc; USBHostMscFatIO io(msc); fatfs::SDClass fat;` and `fat.begin(io)` in `onMount()` |
+| `USBMscExt4FS` / `USBMscExt4FSReadOnly` | `USBHostMscExt4IO` + `tinyext4::Ext4FS` (`begin(io, readOnly)`) |
+| `fatFs.fs()` (`fs::FS`) | `fatfs::ArduinoFS` / `tinyext4::ArduinoFS` (ESP32, RP2040) |
+| `USBMscFile` (STM32) | `fatfs::File` / `tinyext4::File` |
+| `USBMscAutoFS` | try `SDClass::begin()`, then `Ext4FS::begin()` (example `USBHostMSC_AutoFS_ListFiles`) |
+| `USBMscFSPool` | one driver + filesystem per drive (example `USBHostMSC_Hub_ListFiles`) |
+| `USBMscPartition`, `USBMscPartitionTable` | done by the filesystems (FatFs: MBR; TinyEXT4: MBR and GPT) |
+| `USBMscBlockDevice`, `USBMscRamDisk`, `USBMscSdCard`, `USBMscNbdBlockDevice` | block drivers of TinyFATFS / TinyEXT4 (`RamIO`, `ArduinoSpiIO`, `NBDClientIO`, ...) or your own class |
+
 ## Documentation
 
 - [Class documentation (Doxygen)](https://pschatzmann.github.io/arduino-usb-msc/annotated.html)

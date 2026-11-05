@@ -72,8 +72,6 @@
 #include <Adafruit_TinyUSB.h>
 #endif
 
-#include "USBMscFSBackend.h"
-
 // RP2040 (earlephilhower core) only builds the TinyUSB host driver when the
 // "Adafruit TinyUSB Host (native)" USB Stack menu entry is selected; that
 // menu entry is what defines USE_TINYUSB_HOST. ESP32 has no such menu (host
@@ -156,18 +154,14 @@ class USBHostMSC {
 public:
   using MountCallback = void (*)(uint8_t dev_addr);
 
-  /// fsBackend, if given (e.g. a USBMscFatFS, USBMscExt4FS or
-  /// USBMscAutoFS), is auto-mounted/unmounted as devices come and go,
-  /// before onMount()/onUnmount() callbacks run.
-  explicit USBHostMSC(USBMscFSBackend *fsBackend = nullptr);
+  USBHostMSC();
 
 #if defined(CFG_TUH_MAX3421) && CFG_TUH_MAX3421
   /// For MAX3421E (external host-shield chip) boards -- e.g. classic
   /// ESP32, which has no USB peripheral of its own -- construct the
   /// Adafruit_USBH_Host with your SPI bus + CS + INT pins and pass it
   /// here instead of calling the plain begin(). See docs/MAX3421E.md.
-  explicit USBHostMSC(Adafruit_USBH_Host &host,
-                       USBMscFSBackend *fsBackend = nullptr);
+  explicit USBHostMSC(Adafruit_USBH_Host &host);
 #endif
 
   /// Bring up the TinyUSB host controller. Call once from setup().
@@ -183,6 +177,12 @@ public:
 
   /// True once dev_addr has enumerated a Mass Storage interface.
   bool isMounted(uint8_t dev_addr) const;
+
+  /// Counts the mounts of dev_addr: changes every time a device mounts at
+  /// that address. TinyUSB reuses addresses, so a drive that was pulled and
+  /// replaced (by another one) can come back at the same dev_addr; comparing
+  /// the generation tells the two apart (see USBHostMscDisk).
+  uint32_t mountGeneration(uint8_t dev_addr) const;
 
   /// Number of currently mounted Mass Storage devices.
   uint8_t mountedDeviceCount() const;
@@ -233,9 +233,9 @@ private:
   static constexpr uint8_t kMaxDevices = CFG_TUH_DEVICE_MAX + 1;
 
   bool _mounted[kMaxDevices];
+  uint32_t _generation[kMaxDevices];
   MountCallback _on_mount;
   MountCallback _on_unmount;
-  USBMscFSBackend *_fs_backend;
 
   volatile bool _busy;
   volatile bool _io_ok;

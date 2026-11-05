@@ -16,11 +16,11 @@ void usbhostmsc_stm32_hw_init(void);
 
 USBHostMSC *USBHostMSC::_instance = nullptr;
 
-USBHostMSC::USBHostMSC(USBMscFSBackend *fsBackend)
-    : _on_mount(nullptr), _on_unmount(nullptr), _fs_backend(fsBackend),
-      _busy(false), _io_ok(false) {
+USBHostMSC::USBHostMSC()
+    : _on_mount(nullptr), _on_unmount(nullptr), _busy(false), _io_ok(false) {
   for (uint8_t i = 0; i < kMaxDevices; i++) {
     _mounted[i] = false;
+    _generation[i] = 0;
 #if USBHOSTMSC_ESP32_CORE
     _present[i] = false;
 #endif
@@ -29,11 +29,12 @@ USBHostMSC::USBHostMSC(USBMscFSBackend *fsBackend)
 }
 
 #if defined(CFG_TUH_MAX3421) && CFG_TUH_MAX3421
-USBHostMSC::USBHostMSC(Adafruit_USBH_Host &host, USBMscFSBackend *fsBackend)
-    : _on_mount(nullptr), _on_unmount(nullptr), _fs_backend(fsBackend),
-      _busy(false), _io_ok(false), _max3421_host(&host) {
+USBHostMSC::USBHostMSC(Adafruit_USBH_Host &host)
+    : _on_mount(nullptr), _on_unmount(nullptr), _busy(false), _io_ok(false),
+      _max3421_host(&host) {
   for (uint8_t i = 0; i < kMaxDevices; i++) {
     _mounted[i] = false;
+    _generation[i] = 0;
   }
   _instance = this;
 }
@@ -104,6 +105,10 @@ void USBHostMSC::task() {
 
 bool USBHostMSC::isMounted(uint8_t dev_addr) const {
   return dev_addr < kMaxDevices && _mounted[dev_addr];
+}
+
+uint32_t USBHostMSC::mountGeneration(uint8_t dev_addr) const {
+  return dev_addr < kMaxDevices ? _generation[dev_addr] : 0;
 }
 
 uint8_t USBHostMSC::mountedDeviceCount() const {
@@ -427,9 +432,7 @@ void USBHostMSC::onUnmount(MountCallback cb) { _on_unmount = cb; }
 void USBHostMSC::_handleMount(uint8_t dev_addr) {
   if (dev_addr < kMaxDevices) {
     _mounted[dev_addr] = true;
-  }
-  if (_fs_backend) {
-    _fs_backend->begin(*this, dev_addr);
+    _generation[dev_addr]++;
   }
   if (_on_mount) {
     _on_mount(dev_addr);
@@ -437,9 +440,6 @@ void USBHostMSC::_handleMount(uint8_t dev_addr) {
 }
 
 void USBHostMSC::_handleUnmount(uint8_t dev_addr) {
-  if (_fs_backend) {
-    _fs_backend->end(dev_addr);
-  }
   if (dev_addr < kMaxDevices) {
     _mounted[dev_addr] = false;
   }

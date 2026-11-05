@@ -1,42 +1,37 @@
 /*
  * USBDeviceMSC_FatSdCard
  *
- * The board is a USB card reader: the FAT/exFAT formatted SD card in its
- * slot shows up on the PC as a drive and can be read and written there.
+ * The board is a USB card reader: the SD card in its slot shows up on the
+ * PC as a drive and can be read and written there. The board only serves
+ * sectors (TinyFATFS's SPI SD driver), so the card can hold any filesystem.
  *
  * While the PC has the card mounted the MCU must not touch the files on it
  * (both sides cache and would corrupt each other). To access the card from
- * the sketch, call msc.mediaPresent(false) first ("eject"), and
- * msc.mediaPresent(true) afterwards.
+ * the sketch, call msc.mediaPresent(false) first ("eject"), mount it with
+ * fatfs::SDClass, end() it, and call msc.mediaPresent(true) afterwards.
  *
  * Wiring: SD card on the default SPI pins, chip select = SD_CS below.
- * ESP32-S2/S3: Tools > USB Mode > "USB-OTG (TinyUSB)"; install SdFat.
+ * ESP32-S2/S3: Tools > USB Mode > "USB-OTG (TinyUSB)".
  * RP2040:      Tools > USB Stack > "Adafruit TinyUSB" (device stack).
  */
 #include <SPI.h>
-#include <SdFat.h>
 
 #include "USBDeviceMSC.h"
-#include "USBMscSdCard.h"
+#include "fatfs.h"
 
 #ifndef SD_CS
 #define SD_CS SS
 #endif
 
-SdFat sd;
-USBMscSdCard *disk;
+fatfs::ArduinoSpiIO card(SD_CS, SPI);
 USBDeviceMSC msc;
 
 void setup() {
-  // cardBegin() only initialises the card; it does not mount a filesystem.
-  if (!sd.cardBegin(SdSpiConfig(SD_CS, SHARED_SPI, SD_SCK_MHZ(16)))) {
+  SPI.begin();
+  msc.setID("Arduino", "SD Card", "1.0");
+  if (!msc.begin(card)) { // call before Serial.begin() on RP2040
     while (true) delay(1000); // no card
   }
-  static USBMscSdCard card(sd.card());
-  disk = &card;
-
-  msc.setID("Arduino", "SD Card", "1.0");
-  msc.begin(*disk); // call before Serial.begin() on RP2040
 }
 
 void loop() {}

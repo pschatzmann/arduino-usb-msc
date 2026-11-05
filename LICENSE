@@ -25,7 +25,8 @@ THE SOFTWARE.
 This license covers usb-msc's own original code. It does not cover
 vendored or depended-upon third-party code, which keeps its own license:
 
-- src/lwext4/ (used by USBMscExt4FS): GPLv2 -- see src/lwext4/LICENSE and
-  src/lwext4/NOTICE.md.
-- The FAT backend (USBMscFatFS) depends on the separately maintained
-  "arduino-fatfs" library; see that project for its license terms.
+- FAT/exFAT support (USBHostMscFatIO) uses the separately maintained
+  TinyFATFS library (MIT, around ChaN's FatFs with its own permissive
+  license); see that project for its license terms.
+- ext2/3/4 support (USBHostMscExt4IO) uses the separately maintained
+  TinyEXT4 library (MIT); see that project for its license terms.

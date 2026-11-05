@@ -17,6 +17,8 @@
 # and these libraries installed (see library.properties' depends= and
 # extras/adafruit_tinyusb_stm32_host.patch):
 #   TinyFATFS, TinyEXT4 (+ Adafruit TinyUSB Library for the stm32/esp32 rows)
+# The USBDeviceMSC_*SdCard examples use the SPI SD drivers of those two
+# libraries (no SdFat needed).
 #
 # Exit code is 0 if every non-skipped combination compiled cleanly, 1
 # otherwise.
@@ -43,7 +45,7 @@ BOARDS=(
 # Format: "board_key:ExampleName" -- one reason string per entry.
 # ---------------------------------------------------------------------------
 declare -A SKIP
-SKIP["stm32:USBHostMSC_AutoFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see the wiki page STM32)"
+SKIP["stm32:USBHostMSC_AutoFS_ListFiles"]="uses fs::FS (fatfs::ArduinoFS / tinyext4::ArduinoFS), which only the ESP32 and RP2040 cores have"
 
 # Classic ESP32 has no native USB peripheral, so every example except
 # USBHostMSC_MAX3421E_Info -- which uses the Adafruit_USBH_Host/MAX3421E
@@ -57,7 +59,7 @@ SKIP["esp32:USBHostMSC_FatFS_ListFiles"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_AutoFS_ListFiles"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_Ext4ReadFile"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_Ext4WriteFile"]="$MAX3421E_REASON"
-SKIP["esp32:USBHostMSC_FSPool_HubListFiles"]="$MAX3421E_REASON"
+SKIP["esp32:USBHostMSC_Hub_ListFiles"]="$MAX3421E_REASON"
 
 # The reverse: USBHostMSC_MAX3421E_Info uses the Adafruit_USBH_Host
 # constructor, which only exists when CFG_TUH_MAX3421 is on -- not the

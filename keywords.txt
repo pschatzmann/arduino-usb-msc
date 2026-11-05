@@ -8,22 +8,10 @@
 
 USBHostMSC	KEYWORD1
 USBDeviceMSC	KEYWORD1
-USBMscBlockDevice	KEYWORD1
-USBMscRamDisk	KEYWORD1
-USBMscNbdBlockDevice	KEYWORD1
-USBMscSdCard	KEYWORD1
+USBHostMscDisk	KEYWORD1
+USBHostMscFatIO	KEYWORD1
+USBHostMscExt4IO	KEYWORD1
 MSCInquiry	KEYWORD1
-USBMscFSBackend	KEYWORD1
-USBMscFatFS	KEYWORD1
-USBMscFile	KEYWORD1
-USBMscExt4FSBase	KEYWORD1
-USBMscExt4FS	KEYWORD1
-USBMscExt4FSReadOnly	KEYWORD1
-USBMscAutoFS	KEYWORD1
-USBMscFSPool	KEYWORD1
-USBMscPartition	KEYWORD1
-USBMscPartitionTable	KEYWORD1
-USBMscPartitionEntry	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -32,6 +20,10 @@ USBMscPartitionEntry	KEYWORD1
 begin	KEYWORD2
 task	KEYWORD2
 isMounted	KEYWORD2
+mountGeneration	KEYWORD2
+sectorCount	KEYWORD2
+ready	KEYWORD2
+init	KEYWORD2
 mountedDeviceCount	KEYWORD2
 deviceAddress	KEYWORD2
 blockCount	KEYWORD2
@@ -42,21 +34,14 @@ readBlocks	KEYWORD2
 writeBlocks	KEYWORD2
 onMount	KEYWORD2
 onUnmount	KEYWORD2
-mounted	KEYWORD2
 setID	KEYWORD2
 setWritable	KEYWORD2
 mediaPresent	KEYWORD2
 hostActive	KEYWORD2
 written	KEYWORD2
 clearWritten	KEYWORD2
-format	KEYWORD2
-addFile	KEYWORD2
 flush	KEYWORD2
-isFat	KEYWORD2
-isExt4	KEYWORD2
-fs	KEYWORD2
 end	KEYWORD2
-mountedCount	KEYWORD2
 open	KEYWORD2
 exists	KEYWORD2
 remove	KEYWORD2
@@ -78,3 +63,4 @@ close	KEYWORD2
 #######################################
 
 USB_HOST_MSC_RHPORT	LITERAL1
+kAnyDevice	LITERAL1

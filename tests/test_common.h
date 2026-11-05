@@ -1,4 +1,5 @@
-// Minimal test helpers: temp dirs, mkfs-built disk images, Backend helpers.
+// Minimal test helpers: temp dirs, mkfs-built disk images, file helpers for
+// TinyFATFS (fatfs::SDClass) and TinyEXT4 (tinyext4::Ext4FS) on a USB drive.
 #pragma once
 
 #include <stdio.h>
@@ -9,10 +10,10 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <vector>
 
-#include "USBMscPartition.h"
-#include "fs/USBMscExt4Backend.h"
-#include "fs/USBMscFatBackend.h"
+#include "USBHostMscExt4IO.h"
+#include "USBHostMscFatIO.h"
 
 //------------------------------------------------------------------ checks
 inline int &failures() {
@@ -154,83 +155,87 @@ inline bool fsckOk(const std::string &disk, const std::string &kind,
   return ok;
 }
 
-//------------------------------------------------------------- mounting
-/// An image "plugged in" as dev 1, with a filesystem backend mounted on it.
-struct Mounted {
+//------------------------------------------------------------- drives
+/// USB host with an image "plugged in" as device 1
+struct Drive {
   USBHostMSC msc;
-  USBMscPartition part;
-  std::unique_ptr<usbmscfs::Backend> be;
   static constexpr uint8_t kDev = 1;
-
-  bool mountFat(const std::string &img) {
-    if (!msc.attach(kDev, img.c_str())) {
-      return false;
-    }
-    USBMscPartitionTable::bindFirstMatching(msc, kDev, isFatPartitionType,
-                                            part);
-    be.reset(new usbmscfs::FatBackend(part));
-    return be->mount();
-  }
-  bool mountExt(const std::string &img, bool read_only) {
-    if (!msc.attach(kDev, img.c_str())) {
-      return false;
-    }
-    USBMscPartitionTable::bindFirstMatching(msc, kDev, isLinuxPartitionType,
-                                            part);
-    be.reset(new usbmscfs::Ext4Backend(part, read_only));
-    return be->mount();
-  }
-  void unmount() { be.reset(); }
+  bool plug(const std::string &img) { return msc.attach(kDev, img.c_str()); }
+  void unplug() { msc.detach(); }
 };
-
-//------------------------------------------------------------- file helpers
-inline bool writeFile(usbmscfs::Backend &be, const char *path,
-                      const char *mode, const std::string &data) {
-  usbmscfs::BackendFile *f = be.open(path, mode);
-  if (!f) {
-    return false;
-  }
-  size_t n = f->write((const uint8_t *)data.data(), data.size());
-  f->close();
-  delete f;
-  return n == data.size();
-}
-
-inline bool readFile(usbmscfs::Backend &be, const char *path,
-                     std::string &out) {
-  usbmscfs::BackendFile *f = be.open(path, "r");
-  if (!f) {
-    return false;
-  }
-  out.clear();
-  uint8_t buf[300];
-  size_t n;
-  while ((n = f->read(buf, sizeof(buf))) > 0) {
-    out.append((const char *)buf, n);
-  }
-  f->close();
-  delete f;
-  return true;
-}
 
 struct Entry {
   bool is_dir;
   uint64_t size;
 };
-inline bool listDir(usbmscfs::Backend &be, const char *path,
-                    std::map<std::string, Entry> &out) {
-  usbmscfs::BackendFile *d = be.open(path, "d");
-  if (!d) {
-    return false;
-  }
+
+//------------------------------------------------------------- FAT helpers
+/// fopen() style mode -> FatFs flags
+inline BYTE fatMode(const char *mode) {
+  const bool plus = mode[1] == '+';
+  if (mode[0] == 'w') return FA_WRITE | FA_CREATE_ALWAYS | (plus ? FA_READ : 0);
+  if (mode[0] == 'a') return FA_WRITE | FA_OPEN_APPEND | (plus ? FA_READ : 0);
+  return plus ? (FA_READ | FA_WRITE) : FA_READ;
+}
+
+inline bool writeFile(fatfs::SDClass &sd, const char *path, const char *mode,
+                      const std::string &data) {
+  fatfs::File f = sd.open(path, fatMode(mode));
+  if (!f) return false;
+  size_t n = f.write((const uint8_t *)data.data(), data.size());
+  f.close();
+  return n == data.size();
+}
+
+inline bool readFile(fatfs::SDClass &sd, const char *path, std::string &out) {
+  fatfs::File f = sd.open(path);
+  if (!f || f.isDirectory()) return false;
   out.clear();
-  char name[256];
-  bool is_dir;
-  uint64_t size;
-  while (d->nextEntry(name, sizeof(name), is_dir, size)) {
-    out[name] = {is_dir, size};
+  uint8_t buf[700]; // odd size: exercises partial sectors
+  size_t n;
+  while ((n = f.readBytes(buf, sizeof(buf))) > 0) out.append((char *)buf, n);
+  f.close();
+  return true;
+}
+
+inline bool listDir(fatfs::SDClass &sd, const char *path,
+                    std::map<std::string, Entry> &out) {
+  out.clear();
+  fatfs::File dir = sd.open(path);
+  if (!dir || !dir.isDirectory()) return false;
+  for (fatfs::File e = dir.openNextFile(); e; e = dir.openNextFile()) {
+    out[e.name()] = {e.isDirectory(), e.isDirectory() ? 0 : (uint64_t)e.size()};
   }
-  d->close();
-  delete d;
+  return true;
+}
+
+//------------------------------------------------------------ ext4 helpers
+inline bool writeFile(tinyext4::Ext4FS &fs, const char *path, const char *mode,
+                      const std::string &data) {
+  tinyext4::File f = fs.open(path, mode);
+  if (!f) return false;
+  size_t n = f.write((const uint8_t *)data.data(), data.size());
+  f.close();
+  return n == data.size();
+}
+
+inline bool readFile(tinyext4::Ext4FS &fs, const char *path, std::string &out) {
+  tinyext4::File f = fs.open(path, "r");
+  if (!f || f.isDirectory()) return false;
+  out.clear();
+  uint8_t buf[700];
+  size_t n;
+  while ((n = f.read(buf, sizeof(buf))) > 0) out.append((char *)buf, n);
+  return true;
+}
+
+inline bool listDir(tinyext4::Ext4FS &fs, const char *path,
+                    std::map<std::string, Entry> &out) {
+  out.clear();
+  tinyext4::File dir = fs.open(path, "r");
+  if (!dir || !dir.isDirectory()) return false;
+  for (tinyext4::File e = dir.openNextFile(); e; e = dir.openNextFile()) {
+    out[e.name()] = {e.isDirectory(), e.isDirectory() ? 0 : e.size()};
+  }
   return true;
 }

@@ -5,10 +5,9 @@ cmake_minimum_required(VERSION 3.16)
 #   cmake -B build && cmake --build build && ctest --test-dir build --output-on-failure
 #
 # This does NOT build the Arduino firmware (that is done with arduino-cli,
-# see test_compile.sh). It compiles the hardware-independent parts --
-# USBMscPartition and the FAT / ext4 backends -- against an image-file stub
-# of USBHostMSC, so they can be exercised with real mkfs-generated disk
-# images, under AddressSanitizer. Needs: dosfstools, exfatprogs,
+# see test_compile.sh). It runs TinyFATFS and TinyEXT4 through the USB IO
+# adapters against an image-file stub of USBHostMSC, so they can be
+# exercised with real mkfs-generated disk images, under AddressSanitizer. Needs: dosfstools, exfatprogs,
 # e2fsprogs, mtools, gdisk (sgdisk), util-linux (sfdisk).
 project(usb_msc_tests LANGUAGES CXX)
 
@@ -56,22 +55,21 @@ message(STATUS "TinyFATFS: ${TINYFATFS_SRC}")
 message(STATUS "TinyEXT4:  ${TINYEXT4_SRC}")
 
 # --- the code under test ----------------------------------------------
-add_library(usbmsc_fs STATIC
-  src/USBMscPartition.cpp
-  src/fs/USBMscFatBackend.cpp
-  src/fs/USBMscExt4Backend.cpp)
-target_compile_definitions(usbmsc_fs PUBLIC USBHOSTMSC_HOST_TEST)
-target_include_directories(usbmsc_fs PUBLIC
+# Header only: the IO adapters (USBHostMscDisk / USBHostMscFatIO /
+# USBHostMscExt4IO) against an image-file stub of USBHostMSC, and
+# USBDeviceMSC.cpp against a stub of Adafruit_USBD_MSC.
+add_library(usbmsc_test INTERFACE)
+target_compile_definitions(usbmsc_test INTERFACE USBHOSTMSC_HOST_TEST
+  # TinyFATFS's desktop Arduino emulation would otherwise define main()
+  # calling setup()/loop()
+  FATFS_NO_MAIN)
+target_include_directories(usbmsc_test INTERFACE
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/tests/stub)
 # SYSTEM: don't show the (header-only) dependencies' own warnings
-target_include_directories(usbmsc_fs SYSTEM PUBLIC
+target_include_directories(usbmsc_test SYSTEM INTERFACE
   ${TINYFATFS_SRC}/src
   ${TINYEXT4_SRC}/src)
-target_compile_options(usbmsc_fs PRIVATE -Wall -Wextra)
-# TinyFATFS's desktop Arduino emulation would otherwise define main()
-# calling setup()/loop() (needs a TinyFATFS version with FATFS_NO_MAIN).
-target_compile_definitions(usbmsc_fs PUBLIC FATFS_NO_MAIN)
 
 enable_testing()
 add_subdirectory(tests)

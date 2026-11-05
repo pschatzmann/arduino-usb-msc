@@ -1,106 +1,87 @@
+// FAT12/16/32 and exFAT on a USB drive: USBHostMscFatIO + fatfs::SDClass,
+// whole disk and MBR partitioned (partition lookup is done by FatFs).
 #include "test_common.h"
 
-// Operations every writable backend must get right.
-static void exercise_writes(usbmscfs::Backend &be) {
+static void exercise_writes(fatfs::SDClass &sd) {
   std::string s;
 
-  CHECK(writeFile(be, "/new.txt", "w", "abc"));
-  CHECK(readFile(be, "/new.txt", s));
+  CHECK(writeFile(sd, "/new.txt", "w", "abc"));
+  CHECK(readFile(sd, "/new.txt", s));
   CHECK_EQ(s, std::string("abc"));
 
-  CHECK(writeFile(be, "/new.txt", "a", "def"));
-  CHECK(readFile(be, "/new.txt", s));
+  CHECK(writeFile(sd, "/new.txt", "a", "def"));
+  CHECK(readFile(sd, "/new.txt", s));
   CHECK_EQ(s, std::string("abcdef"));
 
   // "w+" must be readable as well as writable
-  usbmscfs::BackendFile *f = be.open("/rw.txt", "w+");
-  CHECK(f != nullptr);
-  if (f) {
-    CHECK_EQ(f->write((const uint8_t *)"xyz", 3), (size_t)3);
-    CHECK(f->seek(0));
+  {
+    fatfs::File f = sd.open("/rw.txt", fatMode("w+"));
+    CHECK((bool)f);
+    CHECK_EQ(f.write((const uint8_t *)"xyz", 3), (size_t)3);
+    CHECK(f.seek(0));
     uint8_t b[8] = {0};
-    CHECK_EQ(f->read(b, sizeof(b)), (size_t)3);
+    CHECK_EQ(f.readBytes(b, sizeof(b)), (size_t)3);
     CHECK(memcmp(b, "xyz", 3) == 0);
-    f->close();
-    delete f;
+    f.close();
   }
-
   // "r+" overwrites in place
-  f = be.open("/rw.txt", "r+");
-  CHECK(f != nullptr);
-  if (f) {
-    CHECK(f->seek(1));
-    CHECK_EQ(f->write((const uint8_t *)"Q", 1), (size_t)1);
-    f->close();
-    delete f;
+  {
+    fatfs::File f = sd.open("/rw.txt", fatMode("r+"));
+    CHECK((bool)f);
+    CHECK(f.seek(1));
+    CHECK_EQ(f.write((const uint8_t *)"Q", 1), (size_t)1);
+    f.close();
   }
-  CHECK(readFile(be, "/rw.txt", s));
+  CHECK(readFile(sd, "/rw.txt", s));
   CHECK_EQ(s, std::string("xQz"));
 
-  // "a+" can read too
-  f = be.open("/rw.txt", "a+");
-  CHECK(f != nullptr);
-  if (f) {
-    CHECK_EQ(f->write((const uint8_t *)"!", 1), (size_t)1);
-    CHECK(f->seek(0));
-    uint8_t b[8] = {0};
-    CHECK_EQ(f->read(b, sizeof(b)), (size_t)4);
-    f->close();
-    delete f;
-  }
-
   // directories
-  CHECK(be.mkdir("/d2"));
-  CHECK(be.isDirectory("/d2"));
-  CHECK(!be.isDirectory("/new.txt"));
-  CHECK(writeFile(be, "/d2/f.txt", "w", "inside"));
-  CHECK(!be.rmdir("/d2")); // not empty
-  CHECK(be.rename("/d2/f.txt", "/d2/g.txt"));
-  CHECK(!be.exists("/d2/f.txt"));
-  CHECK(be.exists("/d2/g.txt"));
-  CHECK(be.remove("/d2/g.txt"));
-  CHECK(be.rmdir("/d2"));
-  CHECK(!be.exists("/d2"));
-  CHECK(be.remove("/rw.txt"));
-  CHECK(!be.exists("/rw.txt"));
-  CHECK(be.exists("/"));
-  CHECK(be.isDirectory("/"));
-  CHECK(!be.exists("/nope"));
-  CHECK(be.open("/nope", "r") == nullptr);
+  fatfs::FatFs &fat = *sd.getFatFs();
+  CHECK(sd.mkdir("/d2"));
+  CHECK(sd.open("/d2").isDirectory());
+  CHECK(writeFile(sd, "/d2/f.txt", "w", "inside"));
+  CHECK(!sd.rmdir("/d2")); // not empty
+  CHECK_EQ(fat.f_rename("/d2/f.txt", "/d2/g.txt"), fatfs::FR_OK);
+  CHECK(!sd.exists("/d2/f.txt"));
+  CHECK(sd.exists("/d2/g.txt"));
+  CHECK(sd.remove("/d2/g.txt"));
+  CHECK(sd.rmdir("/d2"));
+  CHECK(!sd.exists("/d2"));
+  CHECK(sd.remove("/rw.txt"));
+  CHECK(!sd.exists("/rw.txt"));
+  CHECK(!sd.exists("/nope"));
+  CHECK(!sd.open("/nope"));
 
-  // a file spanning many clusters / extents
+  // a file spanning many clusters
   std::string big(200 * 1024 + 123, 0);
   for (size_t i = 0; i < big.size(); i++) big[i] = (char)(i * 31 + (i >> 8));
-  CHECK(writeFile(be, "/big.bin", "w", big));
-  CHECK(readFile(be, "/big.bin", s));
+  CHECK(writeFile(sd, "/big.bin", "w", big));
+  CHECK(readFile(sd, "/big.bin", s));
   CHECK(s == big);
-  usbmscfs::BackendFile *bf = be.open("/big.bin", "r");
-  CHECK(bf && bf->size() == big.size());
-  if (bf) {
-    CHECK(bf->seek(150000));
-    uint8_t one;
-    CHECK_EQ(bf->read(&one, 1), (size_t)1);
-    CHECK_EQ((char)one, big[150000]);
-    bf->close();
-    delete bf;
+  {
+    fatfs::File f = sd.open("/big.bin");
+    CHECK(f && f.size() == big.size());
+    CHECK(f.seek(150000));
+    CHECK_EQ((char)f.read(), big[150000]);
+    f.close();
   }
 }
 
-static void check_prepopulated(usbmscfs::Backend &be) {
+static void check_prepopulated(fatfs::SDClass &sd) {
   std::string s;
-  CHECK(readFile(be, "/hello.txt", s));
+  CHECK(readFile(sd, "/hello.txt", s));
   CHECK_EQ(s, std::string("Hello USB\n"));
 
   std::map<std::string, Entry> m;
-  CHECK(listDir(be, "/", m));
+  CHECK(listDir(sd, "/", m));
   CHECK(m.count("hello.txt") && !m["hello.txt"].is_dir &&
         m["hello.txt"].size == 10);
   CHECK(m.count("dir") && m["dir"].is_dir);
 
-  CHECK(listDir(be, "/dir", m));
+  CHECK(listDir(sd, "/dir", m));
   CHECK(m.count("sub.txt") && m["sub.txt"].size == 16);
 
-  CHECK(readFile(be, "/dir/sub.txt", s));
+  CHECK(readFile(sd, "/dir/sub.txt", s));
   CHECK_EQ(s, std::string("sub file content"));
 }
 
@@ -108,23 +89,27 @@ static void run_case(const char *kind, Layout layout, bool populated) {
   TmpDir d;
   std::string img = makeDisk(d, kind, layout);
   {
-    Mounted m;
-    CHECK(m.mountFat(img));
-    if (!m.be) return;
-    if (populated) check_prepopulated(*m.be);
-    exercise_writes(*m.be);
-    m.unmount();
+    Drive drive;
+    CHECK(drive.plug(img));
+    USBHostMscFatIO io(drive.msc); // kAnyDevice
+    fatfs::SDClass sd;
+    CHECK(sd.begin(io));
+    CHECK_EQ(io.disk().deviceAddress(), Drive::kDev);
+    if (populated) check_prepopulated(sd);
+    exercise_writes(sd);
+    sd.end();
   }
   CHECK(fsckOk(img, kind, layout != Layout::Raw));
 
   // everything written must survive a remount
-  Mounted m2;
-  CHECK(m2.mountFat(img));
-  if (m2.be) {
-    std::string s;
-    CHECK(readFile(*m2.be, "/new.txt", s));
-    CHECK_EQ(s, std::string("abcdef"));
-  }
+  Drive drive;
+  CHECK(drive.plug(img));
+  USBHostMscFatIO io(drive.msc, Drive::kDev); // explicit address
+  fatfs::SDClass sd;
+  CHECK(sd.begin(io));
+  std::string s;
+  CHECK(readFile(sd, "/new.txt", s));
+  CHECK_EQ(s, std::string("abcdef"));
 }
 
 static void test_fat32_raw() { run_case("fat32", Layout::Raw, true); }
@@ -136,8 +121,20 @@ static void test_exfat_mbr() { run_case("exfat", Layout::Mbr, false); }
 static void test_rejects_ext4() {
   TmpDir d;
   std::string img = makeDisk(d, "ext4", Layout::Raw);
-  Mounted m;
-  CHECK(!m.mountFat(img));
+  Drive drive;
+  CHECK(drive.plug(img));
+  USBHostMscFatIO io(drive.msc);
+  fatfs::SDClass sd;
+  CHECK(!sd.begin(io)); // mounted immediately, not lazily
+}
+
+static void test_no_drive() {
+  USBHostMSC msc;
+  USBHostMscFatIO io(msc);
+  fatfs::SDClass sd;
+  CHECK(!sd.begin(io));
+  USBHostMscFatIO unbound; // begin() never called
+  CHECK(!sd.begin(unbound));
 }
 
 int main() {
@@ -147,5 +144,6 @@ int main() {
   RUN(test_exfat_raw);
   RUN(test_exfat_mbr); // MBR type 0x07
   RUN(test_rejects_ext4);
+  RUN(test_no_drive);
   return finish();
 }

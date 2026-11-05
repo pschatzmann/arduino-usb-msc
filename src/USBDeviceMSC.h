@@ -3,8 +3,9 @@
  *
  * The counterpart of USBHostMSC: instead of reading a USB stick, the board
  * *is* one. A PC that is plugged into the board's USB port sees a drive
- * whose blocks are served by any USBMscBlockDevice (RAM disk, SD card,
- * SPI flash, ... or your own subclass).
+ * whose sectors are served by a block driver of TinyFATFS or TinyEXT4
+ * (RamIO, ArduinoSpiIO, Esp32SdmmcIO, NBDClientIO, ...) or by your own class
+ * with the same disk_read()/disk_write()/disk_ioctl() interface.
  *
  * Built on the device-mode MSC class that is already part of the platform:
  *   - ESP32-S2/S3 (arduino-esp32 core): the core's USBMSC. Select
@@ -30,7 +31,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "USBMscBlockDevice.h"
 
 #if defined(ARDUINO_ARCH_ESP32) && !defined(USBDEVMSC_USE_ADAFRUIT_TINYUSB)
 #include "sdkconfig.h"
@@ -62,49 +62,20 @@
 #endif
 
 /**
- * @brief Simple RAM disk. Pass your own buffer (size = blocks * 512) or
- * let it malloc one. The content is lost on reset; it is *not* formatted --
- * format() writes a minimal FAT12/16 filesystem so that hosts accept it
- * (requires at least ~64 blocks, i.e. 32 KB).
- */
-class USBMscRamDisk : public USBMscBlockDevice {
-public:
-  USBMscRamDisk(uint32_t blocks, uint8_t *storage = nullptr);
-  ~USBMscRamDisk();
-  bool begin(bool formatFat = true);
-  uint32_t blockCount() override { return _blocks; }
-  bool readBlocks(uint32_t lba, void *buffer, uint32_t count) override;
-  bool writeBlocks(uint32_t lba, const void *buffer, uint32_t count) override;
-  /// Direct access to the backing store (e.g. for preloading).
-  uint8_t *data() { return _data; }
-  /// Writes an empty FAT12/FAT16 volume. Returns false if too small.
-  bool format(const char *label = "RAMDISK");
-  /// Adds a file to the root directory of the volume written by format().
-  /// `name` is 8.3 ("HELLO.TXT", upper case). Files are stored contiguously,
-  /// so call it right after format() and before the PC gets the drive.
-  /// Returns false if the name is invalid or the volume/root is full.
-  bool addFile(const char *name, const void *data, uint32_t len);
-
-private:
-  void setFat(uint32_t cluster, uint32_t value);
-  uint32_t _blocks;
-  // geometry of the volume written by format()
-  uint8_t _spc = 0;
-  bool _fat12 = false;
-  uint32_t _fatSectors = 0, _rootStart = 0, _dataStart = 0, _clusters = 0;
-  uint32_t _nextCluster = 2;
-  uint16_t _rootUsed = 0, _rootEntries = 0;
-  uint8_t *_data;
-  bool _owned;
-};
-
-/**
- * @brief Exports a USBMscBlockDevice to the USB host (PC).
+ * @brief Exports a block driver to the USB host (PC) as a USB drive.
+ *
+ * The driver can be any class with the FatFs style block interface
+ * (disk_initialize(), disk_status(), disk_read(), disk_write(),
+ * disk_ioctl()): every fatfs::IO of TinyFATFS and every tinyext4::IO of
+ * TinyEXT4, or your own class. Only 512-byte sectors are supported.
  *
  * @code
- * USBMscRamDisk disk(128);          // 64 KB
+ * #include "USBDeviceMSC.h"
+ * #include "fatfs.h"
+ *
+ * fatfs::RamIO ram(256);           // 128 KB, formatted by SDClass::begin()
  * USBDeviceMSC msc;
- * void setup() { disk.begin(); msc.begin(disk); }
+ * void setup() { msc.begin(ram); }
  * @endcode
  */
 class USBDeviceMSC {
@@ -115,13 +86,46 @@ public:
   /// Optional, call before begin(). Max lengths 8 / 16 / 4 characters.
   void setID(const char *vendor, const char *product, const char *revision);
 
-  /// Registers the MSC interface and exports `dev`. Must be called before
-  /// the USB stack starts: on boards where the core starts USB itself
-  /// (RP2040, SAMD, nRF52) call it first thing in setup(), before
-  /// Serial.begin(); on ESP32-S2/S3 it calls USB.begin() for you unless
-  /// startUsb is false (set it false if you add other USB classes and
-  /// call USB.begin() yourself).
-  bool begin(USBMscBlockDevice &dev, bool startUsb = true);
+  /// Registers the MSC interface and exports `io` (which must outlive the
+  /// export). Must be called before the USB stack starts: on boards where
+  /// the core starts USB itself (RP2040, SAMD, nRF52) call it first thing
+  /// in setup(), before Serial.begin(); on ESP32-S2/S3 it calls USB.begin()
+  /// for you unless startUsb is false (set it false if you add other USB
+  /// classes and call USB.begin() yourself).
+  template <class IO> bool begin(IO &io, bool startUsb = true) {
+    using Sig = decltype(sigOf(&IO::disk_read));
+    using Cmd = decltype(cmdOf(&IO::disk_ioctl));
+    if (io.disk_initialize(0) & (kNoInit | kNoDisk)) {
+      return false;
+    }
+    typename Sig::Lba sectors = 0;
+    if ((int)io.disk_ioctl(0, (Cmd)kGetSectorCount, &sectors) != 0 ||
+        sectors == 0) {
+      return false;
+    }
+    uint16_t size = 0; // GET_SECTOR_SIZE is optional (512 if unsupported)
+    if ((int)io.disk_ioctl(0, (Cmd)kGetSectorSize, &size) == 0 && size != 0 &&
+        size != kSectorSize) {
+      return false;
+    }
+    Disk d;
+    d.ctx = &io;
+    d.read = [](void *ctx, uint32_t lba, void *buf, uint32_t n) {
+      return (int)((IO *)ctx)->disk_read(0, (typename Sig::Buf)buf,
+                                          (typename Sig::Lba)lba,
+                                          (typename Sig::Count)n) == 0;
+    };
+    d.write = [](void *ctx, uint32_t lba, const void *buf, uint32_t n) {
+      return (int)((IO *)ctx)->disk_write(0, (const uint8_t *)buf,
+                                           (typename Sig::Lba)lba,
+                                           (typename Sig::Count)n) == 0;
+    };
+    d.flush = [](void *ctx) {
+      ((IO *)ctx)->disk_ioctl(0, (Cmd)kCtrlSync, nullptr);
+    };
+    d.sectors = (uint32_t)sectors;
+    return _begin(d, startUsb);
+  }
 
   void end();
 
@@ -148,7 +152,42 @@ public:
   void _flush();
 
 private:
-  USBMscBlockDevice *_dev = nullptr;
+  static constexpr uint16_t kSectorSize = 512;
+  // FatFs values, identical in TinyFATFS and TinyEXT4
+  static constexpr int kNoInit = 0x01, kNoDisk = 0x02;
+  static constexpr int kCtrlSync = 0, kGetSectorCount = 1, kGetSectorSize = 2;
+
+  /// Type-erased driver
+  struct Disk {
+    void *ctx = nullptr;
+    bool (*read)(void *, uint32_t, void *, uint32_t) = nullptr;
+    bool (*write)(void *, uint32_t, const void *, uint32_t) = nullptr;
+    void (*flush)(void *) = nullptr;
+    uint32_t sectors = 0;
+  };
+
+  // parameter types of IO::disk_read(pdrv, buff, sector, count) and
+  // IO::disk_ioctl(pdrv, cmd, buff), which differ per library
+  template <class B, class L, class N> struct ReadSig {
+    using Buf = B;
+    using Lba = L;
+    using Count = N;
+  };
+  template <class C, class R, class P, class B, class L, class N>
+  static ReadSig<B, L, N> sigOf(R (C::*)(P, B, L, N));
+  template <class C, class R, class P, class Cmd>
+  static Cmd cmdOf(R (C::*)(P, Cmd, void *));
+
+  bool _begin(const Disk &disk, bool startUsb);
+  bool _readSectors(uint32_t lba, void *buf, uint32_t n) {
+    return _disk.read(_disk.ctx, lba, buf, n);
+  }
+  bool _writeSectors(uint32_t lba, const void *buf, uint32_t n) {
+    return _disk.write(_disk.ctx, lba, buf, n);
+  }
+
+  Disk _disk;
+  bool _open = false;
   bool _writable = true;
   volatile bool _active = false;
   volatile bool _written = false;
