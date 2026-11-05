@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['license_0',['License',['../index.html#autotoc_md3',1,'']]],
-  ['lun_1',['lun',['../classUSBHostMscDisk.html#a5b37f747c46fd3fba89ac25d563361a6',1,'USBHostMscDisk']]]
+  ['product_5fid_0',['product_id',['../structMSCInquiry.html#a7e4e724a3a15783f03f204762fd3f99e',1,'MSCInquiry']]],
+  ['product_5frev_1',['product_rev',['../structMSCInquiry.html#a50d28a35091be42f7d0a209a7020f95f',1,'MSCInquiry']]]
 ];

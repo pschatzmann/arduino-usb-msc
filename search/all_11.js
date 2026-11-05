@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['task_0',['task',['../classUSBHostMSC.html#a22f773d7ff8170ae3982ee90d00f9504',1,'USBHostMSC']]],
-  ['tuh_5fmsc_5fmount_5fcb_1',['tuh_msc_mount_cb',['../USBHostMSC_8cpp.html#af34a338ee2c52a7069b60172e64ee182',1,'USBHostMSC.cpp']]],
-  ['tuh_5fmsc_5fumount_5fcb_2',['tuh_msc_umount_cb',['../USBHostMSC_8cpp.html#ad6b481be537b8016eba5c698799ea5d4',1,'USBHostMSC.cpp']]]
+  ['writable_0',['writable',['../classUSBDeviceMSC.html#ab308db029ce4668e546f16d6798586bd',1,'USBDeviceMSC']]],
+  ['write_1',['write',['../classUSBHostMscDisk.html#abd47c517075dc4598f1d412fd85bcb7e',1,'USBHostMscDisk']]],
+  ['writeblocks_2',['writeBlocks',['../classUSBHostMSC.html#a7475c9d10551e565d54264cb03241f5b',1,'USBHostMSC']]],
+  ['written_3',['written',['../classUSBDeviceMSC.html#add3c05a8ea6003e38c2df605f77a5af7',1,'USBDeviceMSC']]]
 ];

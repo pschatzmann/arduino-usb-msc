@@ -116,29 +116,6 @@ $(function() {
 <div class="ttc" id="aclassUSBHostMscFatIO_html"><div class="ttname"><a href="classUSBHostMscFatIO.html">USBHostMscFatIO</a></div><div class="ttdef"><b>Definition</b> USBHostMscFatIO.h:29</div></div>
 </div><!-- fragment --><p>On ESP32 and RP2040, <code>fatfs::ArduinoFS</code> / <code>tinyext4::ArduinoFS</code> turn a mounted volume into an Arduino <code>fs::FS</code>.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Upgrading from 0.1</h1>
-<p>Version 0.2 removed this library's own filesystem layer in favour of the APIs of TinyFATFS and TinyEXT4:</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">0.1   </th><th class="markdownTableHeadNone">0.2    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USBMscFatFS fatFs; <a class="el" href="classUSBHostMSC.html" title="Blocking wrapper around TinyUSB&#39;s USB Host Mass Storage (tuh_msc_*) class driver. One instance manage...">USBHostMSC</a> msc(&amp;fatFs);</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classUSBHostMSC.html" title="Blocking wrapper around TinyUSB&#39;s USB Host Mass Storage (tuh_msc_*) class driver. One instance manage...">USBHostMSC</a> msc; <a class="el" href="classUSBHostMscFatIO.html">USBHostMscFatIO</a> io(msc); fatfs::SDClass fat;</code> and <code>fat.begin(io)</code> in <code>onMount()</code>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USBMscExt4FS</code> / <code>USBMscExt4FSReadOnly</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classUSBHostMscExt4IO.html">USBHostMscExt4IO</a></code> + <code>tinyext4::Ext4FS</code> (<code>begin(io, readOnly)</code>)    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>fatFs.fs()</code> (<code>fs::FS</code>)   </td><td class="markdownTableBodyNone"><code>fatfs::ArduinoFS</code> / <code>tinyext4::ArduinoFS</code> (ESP32, RP2040)    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USBMscFile</code> (STM32)   </td><td class="markdownTableBodyNone"><code>fatfs::File</code> / <code>tinyext4::File</code>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USBMscAutoFS</code>   </td><td class="markdownTableBodyNone">try <code>SDClass::begin()</code>, then <code>Ext4FS::begin()</code> (example <code>USBHostMSC_AutoFS_ListFiles</code>)    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USBMscFSPool</code>   </td><td class="markdownTableBodyNone">one driver + filesystem per drive (example <code>USBHostMSC_Hub_ListFiles</code>)    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USBMscPartition</code>, <code>USBMscPartitionTable</code>   </td><td class="markdownTableBodyNone">done by the filesystems (FatFs: MBR; TinyEXT4: MBR and GPT)    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USBMscBlockDevice</code>, <code>USBMscRamDisk</code>, <code>USBMscSdCard</code>, <code>USBMscNbdBlockDevice</code>   </td><td class="markdownTableBodyNone">block drivers of TinyFATFS / TinyEXT4 (<code>RamIO</code>, <code>ArduinoSpiIO</code>, <code>NBDClientIO</code>, ...) or your own class   </td></tr>
-</table>
-<h1><a class="anchor" id="autotoc_md2"></a>
 Documentation</h1>
 <ul>
 <li><a href="https://pschatzmann.github.io/arduino-usb-msc/annotated.html">Class documentation (Doxygen)</a></li>
@@ -164,7 +141,7 @@ Documentation</h1>
 <li><a href="https://github.com/pschatzmann/arduino-usb-msc/wiki/EXAMPLES">Examples</a></li>
 <li><a href="https://github.com/pschatzmann/arduino-usb-msc/wiki/TESTING">Testing</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 License</h1>
 <p>MIT. See <a href="https://github.com/pschatzmann/arduino-usb-msc/wiki/LICENSING">Licensing</a>. </p>
 </div></div><!-- PageDoc -->

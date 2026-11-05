@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['init_0',['init',['../classUSBHostMscDisk.html#a7bef885ac7318cb212e2e7e1ef9c2a94',1,'USBHostMscDisk']]],
-  ['inquiry_1',['inquiry',['../classUSBHostMSC.html#a8ff0226c251629e5ea84d5ba319e9e55',1,'USBHostMSC']]],
-  ['ismounted_2',['isMounted',['../classUSBHostMSC.html#a0116ca32639e570ae28745be153495ef',1,'USBHostMSC']]]
+  ['maxlun_0',['maxLun',['../classUSBHostMSC.html#a4bfe807e143799d432b8f6cf42d0f52b',1,'USBHostMSC']]],
+  ['mediapresent_1',['mediaPresent',['../classUSBDeviceMSC.html#aca3bf03c392eb7e32c825aaff1705b91',1,'USBDeviceMSC']]],
+  ['mount_2',['mount',['../classUSBHostMscFatIO.html#a27522c709b186b8e7bcfd239f01b68b2',1,'USBHostMscFatIO']]],
+  ['mountcallback_3',['MountCallback',['../classUSBHostMSC.html#ac8a2d6bff930dfa657a951e905425899',1,'USBHostMSC']]],
+  ['mounteddevicecount_4',['mountedDeviceCount',['../classUSBHostMSC.html#a80c399a8563922958d0c9f51b7e56a5e',1,'USBHostMSC']]],
+  ['mountgeneration_5',['mountGeneration',['../classUSBHostMSC.html#a2b23d0b28e70ab29dd0f1d4de863ecd5',1,'USBHostMSC']]],
+  ['msc_6',['usb-msc',['../index.html',1,'']]],
+  ['mscinquiry_7',['MSCInquiry',['../structMSCInquiry.html',1,'']]]
 ];
