@@ -49,22 +49,6 @@ void loop() { msc.task(); }
 On ESP32 and RP2040, `fatfs::ArduinoFS` / `tinyext4::ArduinoFS` turn a
 mounted volume into an Arduino `fs::FS`.
 
-## Upgrading from 0.1
-
-Version 0.2 removed this library's own filesystem layer in favour of the
-APIs of TinyFATFS and TinyEXT4:
-
-| 0.1 | 0.2 |
-|---|---|
-| `USBMscFatFS fatFs; USBHostMSC msc(&fatFs);` | `USBHostMSC msc; USBHostMscFatIO io(msc); fatfs::SDClass fat;` and `fat.begin(io)` in `onMount()` |
-| `USBMscExt4FS` / `USBMscExt4FSReadOnly` | `USBHostMscExt4IO` + `tinyext4::Ext4FS` (`begin(io, readOnly)`) |
-| `fatFs.fs()` (`fs::FS`) | `fatfs::ArduinoFS` / `tinyext4::ArduinoFS` (ESP32, RP2040) |
-| `USBMscFile` (STM32) | `fatfs::File` / `tinyext4::File` |
-| `USBMscAutoFS` | try `SDClass::begin()`, then `Ext4FS::begin()` (example `USBHostMSC_AutoFS_ListFiles`) |
-| `USBMscFSPool` | one driver + filesystem per drive (example `USBHostMSC_Hub_ListFiles`) |
-| `USBMscPartition`, `USBMscPartitionTable` | done by the filesystems (FatFs: MBR; TinyEXT4: MBR and GPT) |
-| `USBMscBlockDevice`, `USBMscRamDisk`, `USBMscSdCard`, `USBMscNbdBlockDevice` | block drivers of TinyFATFS / TinyEXT4 (`RamIO`, `ArduinoSpiIO`, `NBDClientIO`, ...) or your own class |
-
 ## Documentation
 
 - [Class documentation (Doxygen)](https://pschatzmann.github.io/arduino-usb-msc/annotated.html)
