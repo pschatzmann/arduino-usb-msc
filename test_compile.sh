@@ -43,14 +43,14 @@ BOARDS=(
 # Format: "board_key:ExampleName" -- one reason string per entry.
 # ---------------------------------------------------------------------------
 declare -A SKIP
-SKIP["stm32:USBHostMSC_AutoFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see docs/STM32.md)"
+SKIP["stm32:USBHostMSC_AutoFS_ListFiles"]="USBMscAutoFS is not ported to STM32 yet (see the wiki page STM32)"
 
 # Classic ESP32 has no native USB peripheral, so every example except
 # USBHostMSC_MAX3421E_Info -- which uses the Adafruit_USBH_Host/MAX3421E
 # constructor -- would compile clean but sit there doing nothing at
 # runtime (the plain USBHostMSC() constructor never wires up SPI/CS/INT).
-# See docs/MAX3421E.md.
-MAX3421E_REASON="classic ESP32 has no native USB -- needs the MAX3421E constructor (see USBHostMSC_MAX3421E_Info, docs/MAX3421E.md)"
+# See the wiki page MAX3421E.
+MAX3421E_REASON="classic ESP32 has no native USB -- needs the MAX3421E constructor (see USBHostMSC_MAX3421E_Info, the wiki page MAX3421E)"
 SKIP["esp32:USBHostMSC_Info"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_BlockRW"]="$MAX3421E_REASON"
 SKIP["esp32:USBHostMSC_FatFS_ListFiles"]="$MAX3421E_REASON"
@@ -75,7 +75,7 @@ for ex_dir in "$EXAMPLES_DIR"/*/; do
   case "$ex" in
     USBDeviceMSC_*)
       for b in rp2040 stm32 esp32; do
-        SKIP["$b:$ex"]="device-mode example; needs a device-capable USB stack (see docs/DEVICE_API.md)"
+        SKIP["$b:$ex"]="device-mode example; needs a device-capable USB stack (see the wiki page DEVICE_API)"
       done ;;
     *)
       SKIP["rp2040dev:$ex"]="host-mode example; rp2040dev builds the USB device stack" ;;

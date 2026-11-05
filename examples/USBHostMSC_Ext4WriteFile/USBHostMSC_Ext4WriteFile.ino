@@ -8,7 +8,7 @@
  *
  * TinyEXT4 writes no journal: pulling the drive mid-write needs an
  * e2fsck on Linux, and ext2/ext3 (or a volume needing fsck) mount
- * read-only even here -- check readOnly() (see docs/FILESYSTEMS.md). If
+ * read-only even here -- check readOnly() (see the wiki page FILESYSTEMS). If
  * you only need to read, prefer USBMscExt4FSReadOnly (see
  * USBHostMSC_Ext4ReadFile).
  *

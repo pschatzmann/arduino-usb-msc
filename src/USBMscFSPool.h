@@ -16,7 +16,7 @@
  * (e.g. USBMscFatFS&) on STM32 (see USBMscFatFS.h/USBMscExt4FSBase.h).
  * That's what lets this same template work unchanged on all three
  * platforms, unlike USBMscAutoFS (not yet ported to STM32 -- see
- * docs/STM32.md -- because *that* class needs USBMscFatFS::fs() and
+ * the wiki page STM32 -- because *that* class needs USBMscFatFS::fs() and
  * USBMscExt4FSBase::fs() to return the *same* type so it can pick between
  * them at runtime; USBMscFSPool never mixes two different FSTypes in one
  * instance, so it never faces that problem).

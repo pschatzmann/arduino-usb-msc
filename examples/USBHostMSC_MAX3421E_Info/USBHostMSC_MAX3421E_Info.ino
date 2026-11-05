@@ -3,7 +3,7 @@
  *
  * Same as USBHostMSC_Info, but for boards with no USB peripheral of their
  * own (e.g. classic ESP32) that add USB host support via an external
- * MAX3421E host-shield chip wired over SPI. See docs/MAX3421E.md for
+ * MAX3421E host-shield chip wired over SPI. See the wiki page MAX3421E for
  * wiring, board coverage, and the CFG_TUH_MAX3421 build details.
  *
  * Board setup:

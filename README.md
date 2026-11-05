@@ -15,12 +15,12 @@ A board's USB port does one role at a time; pick it in the board's USB menu.
 ## Documentation
 
 - [Class documentation (Doxygen)](https://pschatzmann.github.io/arduino-usb-msc/annotated.html)
-- [Installation and board settings](docs/INSTALLATION.md) -- [supported boards](docs/BOARDS.md)
-- [Host vs. device overview](docs/OVERVIEW.md)
-- Host mode: [quick start](docs/HOST_QUICKSTART.md), [block API](docs/BLOCK_API.md), [filesystems](docs/FILESYSTEMS.md), [hubs](docs/MULTIPLE_DEVICES.md), [ESP32](docs/ESP32_NATIVE.md), [STM32](docs/STM32.md), [MAX3421E](docs/MAX3421E.md), [single-port wiring](docs/SINGLE_PORT.md)
-- Device mode: [quick start](docs/DEVICE_QUICKSTART.md), [API](docs/DEVICE_API.md)
-- [Examples](docs/EXAMPLES.md), [Testing](docs/TESTING.md), [Licensing](docs/LICENSING.md)
+- [Installation and board settings](https://github.com/pschatzmann/arduino-usb-msc/wiki/INSTALLATION) -- [supported boards](https://github.com/pschatzmann/arduino-usb-msc/wiki/BOARDS)
+- [Host vs. device overview](https://github.com/pschatzmann/arduino-usb-msc/wiki/OVERVIEW)
+- Host mode: [quick start](https://github.com/pschatzmann/arduino-usb-msc/wiki/HOST_QUICKSTART), [block API](https://github.com/pschatzmann/arduino-usb-msc/wiki/BLOCK_API), [filesystems](https://github.com/pschatzmann/arduino-usb-msc/wiki/FILESYSTEMS), [hubs](https://github.com/pschatzmann/arduino-usb-msc/wiki/MULTIPLE_DEVICES), [ESP32](https://github.com/pschatzmann/arduino-usb-msc/wiki/ESP32_NATIVE), [STM32](https://github.com/pschatzmann/arduino-usb-msc/wiki/STM32), [MAX3421E](https://github.com/pschatzmann/arduino-usb-msc/wiki/MAX3421E), [single-port wiring](https://github.com/pschatzmann/arduino-usb-msc/wiki/SINGLE_PORT)
+- Device mode: [quick start](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_QUICKSTART), [API](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_API)
+- [Examples](https://github.com/pschatzmann/arduino-usb-msc/wiki/EXAMPLES), [Testing](https://github.com/pschatzmann/arduino-usb-msc/wiki/TESTING), [Licensing](https://github.com/pschatzmann/arduino-usb-msc/wiki/LICENSING)
 
 ## License
 
-MIT. See [docs/LICENSING.md](docs/LICENSING.md).
+MIT. See [Licensing](https://github.com/pschatzmann/arduino-usb-msc/wiki/LICENSING).

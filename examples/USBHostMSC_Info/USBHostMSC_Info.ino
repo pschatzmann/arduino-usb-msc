@@ -15,10 +15,10 @@
  *              core >= 3.3; the core's own TinyUSB is used, no extra
  *              library). The native USB port is now the host port, so
  *              Serial is UART0 (TX=GPIO43, RX=GPIO44): connect a USB-UART
- *              adapter -- see docs/SINGLE_PORT.md.
+ *              adapter -- see the wiki page SINGLE_PORT.
  *  - STM32:    (F4/F7 OTG_FS parts, e.g. BlackPill F411CE) Requires a
  *              small patch to Adafruit_TinyUSB_Arduino and building with
- *              -DCFG_TUH_ENABLED=1 -- see docs/STM32.md. Serial
+ *              -DCFG_TUH_ENABLED=1 -- see the wiki page STM32. Serial
  *              output goes over Serial1, same reason as RP2040.
  */
 
