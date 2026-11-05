@@ -8,6 +8,7 @@
 #include <FS.h>
 
 #include "USBHostMSC.h"
+#include "USBMscBlockDevice.h"
 #include "USBMscFSBackend.h"
 #include "USBMscPartition.h"
 
@@ -35,6 +36,12 @@ public:
   /// false if the boot sector doesn't look like FAT.
   bool begin(USBHostMSC &msc, uint8_t dev_addr) override;
 
+  /// Same, for any USBMscBlockDevice (RAM disk, SD card, NBD export, ...)
+  /// instead of a USB stick. The device must use 512-byte blocks and must
+  /// stay valid until end() is called or this object is destroyed. Call
+  /// end() (not end(dev_addr)) to unmount.
+  bool begin(USBMscBlockDevice &dev);
+
   /// Convenience overload for direct callers that don't track dev_addr
   /// themselves -- this class only ever holds one mounted filesystem, so
   /// there's nothing to disambiguate.
@@ -49,6 +56,7 @@ public:
 
 private:
   void reset();
+  bool mountBound();
 
   USBMscPartition _partition;
   usbmscfs::FatBackend *_backend = nullptr;
@@ -58,6 +66,7 @@ private:
 #elif defined(ARDUINO_ARCH_STM32)
 
 #include "USBHostMSC.h"
+#include "USBMscBlockDevice.h"
 #include "USBMscFSBackend.h"
 #include "USBMscFile.h"
 #include "USBMscPartition.h"
@@ -89,6 +98,12 @@ public:
   /// false if the boot sector doesn't look like FAT.
   bool begin(USBHostMSC &msc, uint8_t dev_addr) override;
 
+  /// Same, for any USBMscBlockDevice (RAM disk, SD card, NBD export, ...)
+  /// instead of a USB stick. The device must use 512-byte blocks and must
+  /// stay valid until end() is called or this object is destroyed. Call
+  /// end() (not end(dev_addr)) to unmount.
+  bool begin(USBMscBlockDevice &dev);
+
   /// Convenience overload for direct callers that don't track dev_addr
   /// themselves -- this class only ever holds one mounted filesystem, so
   /// there's nothing to disambiguate.
@@ -112,6 +127,7 @@ public:
 
 private:
   void reset();
+  bool mountBound();
 
   USBMscPartition _partition;
   usbmscfs::Backend *_backend = nullptr;

@@ -25,7 +25,8 @@
  * ```
  *
  * ExtType must have the same shape as USBMscExt4FS/USBMscExt4FSReadOnly:
- * `bool begin(USBHostMSC&, uint8_t)`, `void end(uint8_t)`,
+ * `bool begin(USBHostMSC&, uint8_t)`, `bool begin(USBMscBlockDevice&)`,
+ * `void end(uint8_t)`,
  * `bool mounted()`, `fs::FS& fs()`.
  */
 template <typename ExtType = USBMscExt4FSReadOnly>
@@ -37,6 +38,21 @@ public:
       return true;
     }
     if (_ext4.begin(msc, dev_addr)) {
+      _active = &_ext4;
+      return true;
+    }
+    _active = nullptr;
+    return false;
+  }
+
+  /// Same, for any USBMscBlockDevice (RAM disk, SD card, NBD export, ...).
+  /// Unmount with end(0) or end(dev_addr) -- the address is ignored.
+  bool begin(USBMscBlockDevice &dev) {
+    if (_fat.begin(dev)) {
+      _active = &_fat;
+      return true;
+    }
+    if (_ext4.begin(dev)) {
       _active = &_ext4;
       return true;
     }

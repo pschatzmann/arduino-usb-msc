@@ -29,6 +29,7 @@ A board's USB port does one role at a time; pick it in the board's USB menu.
 - Device mode: 
   - [quick start](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_QUICKSTART) 
   - [API](https://github.com/pschatzmann/arduino-usb-msc/wiki/DEVICE_API)
+- [NBD (network block device) storage](https://github.com/pschatzmann/arduino-usb-msc/wiki/NBD): mount a remote disk, or export it over USB
 - [Examples](https://github.com/pschatzmann/arduino-usb-msc/wiki/EXAMPLES) 
 - [Testing](https://github.com/pschatzmann/arduino-usb-msc/wiki/TESTING)
 

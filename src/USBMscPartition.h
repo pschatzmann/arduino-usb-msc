@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#include "USBMscBlockDevice.h"
+
 // USBHOSTMSC_HOST_TEST: desktop unit tests (see docs/TESTING.md) swap the
 // TinyUSB-backed USBHostMSC for an image-file stub with the same block API.
 #if defined(USBHOSTMSC_HOST_TEST)
@@ -33,12 +35,18 @@ public:
   /// signature.
   static int8_t read(USBHostMSC &msc, uint8_t dev_addr,
                       USBMscPartitionEntry entries[4]);
+  /// Same, for any block device (RAM disk, SD card, NBD export, ...).
+  static int8_t read(USBMscBlockDevice &dev, USBMscPartitionEntry entries[4]);
 
   /// Binds `part` to the first partition whose type byte satisfies
   /// typeMatches. Falls back to the whole disk if there's no MBR, or no
   /// partition matches (so a superfloppy-formatted or misdetected drive
   /// still gets a usable binding to try mounting against).
   static void bindFirstMatching(USBHostMSC &msc, uint8_t dev_addr,
+                                 bool (*typeMatches)(uint8_t type),
+                                 USBMscPartition &part);
+  /// Same, for any block device.
+  static void bindFirstMatching(USBMscBlockDevice &dev,
                                  bool (*typeMatches)(uint8_t type),
                                  USBMscPartition &part);
 };
@@ -64,15 +72,24 @@ public:
   /// Bind to the whole disk (no partition offset).
   void begin(USBHostMSC &msc, uint8_t dev_addr);
 
+  /// Bind to a single partition of a block device. The device must stay
+  /// valid for as long as this object (and any filesystem on it) is used.
+  void begin(USBMscBlockDevice &dev, const USBMscPartitionEntry &entry);
+
+  /// Bind to the whole block device (no partition offset).
+  void begin(USBMscBlockDevice &dev);
+
   uint32_t blockSize() const;
   uint32_t blockCount() const { return _sector_count; }
+  /// USB device address; 0 when bound to a USBMscBlockDevice.
   uint8_t deviceAddress() const { return _dev_addr; }
 
   bool readBlocks(uint32_t lba, void *buffer, uint16_t count);
   bool writeBlocks(uint32_t lba, const void *buffer, uint16_t count);
 
 private:
-  USBHostMSC *_msc = nullptr;
+  USBHostMSC *_msc = nullptr;      // USB host device, or ...
+  USBMscBlockDevice *_dev = nullptr; // ... any block device (not both)
   uint8_t _dev_addr = 0;
   uint32_t _lba_start = 0;
   uint32_t _sector_count = 0;

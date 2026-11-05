@@ -30,6 +30,18 @@ bool USBMscExt4FSBase::begin(USBHostMSC &msc, uint8_t dev_addr) {
 
   USBMscPartitionTable::bindFirstMatching(msc, dev_addr, isLinuxPartitionType,
                                            _partition);
+  return mountBound();
+}
+
+bool USBMscExt4FSBase::begin(USBMscBlockDevice &dev) {
+  reset();
+
+  USBMscPartitionTable::bindFirstMatching(dev, isLinuxPartitionType,
+                                           _partition);
+  return mountBound();
+}
+
+bool USBMscExt4FSBase::mountBound() {
   if (!looksLikeExt(_partition)) {
     return false;
   }
@@ -84,6 +96,18 @@ bool USBMscExt4FSBase::begin(USBHostMSC &msc, uint8_t dev_addr) {
 
   USBMscPartitionTable::bindFirstMatching(msc, dev_addr, isLinuxPartitionType,
                                            _partition);
+  return mountBound();
+}
+
+bool USBMscExt4FSBase::begin(USBMscBlockDevice &dev) {
+  reset();
+
+  USBMscPartitionTable::bindFirstMatching(dev, isLinuxPartitionType,
+                                           _partition);
+  return mountBound();
+}
+
+bool USBMscExt4FSBase::mountBound() {
   if (!looksLikeExt(_partition)) {
     return false;
   }

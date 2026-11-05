@@ -1,6 +1,6 @@
 # Host mode: filesystem layer + partition parsing against an image-file stub
 # of USBHostMSC (see tests/stub/USBHostMSC_host_test.h).
-foreach(t partition fat ext4 lifetime)
+foreach(t partition fat ext4 lifetime blockdevice)
   add_executable(test_host_${t} test_host_${t}.cpp)
   target_link_libraries(test_host_${t} PRIVATE usbmsc_fs)
   target_compile_options(test_host_${t} PRIVATE -Wall -Wextra)

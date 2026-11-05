@@ -39,6 +39,18 @@ bool USBMscFatFS::begin(USBHostMSC &msc, uint8_t dev_addr) {
 
   USBMscPartitionTable::bindFirstMatching(msc, dev_addr, isFatPartitionType,
                                            _partition);
+  return mountBound();
+}
+
+bool USBMscFatFS::begin(USBMscBlockDevice &dev) {
+  reset();
+
+  USBMscPartitionTable::bindFirstMatching(dev, isFatPartitionType,
+                                           _partition);
+  return mountBound();
+}
+
+bool USBMscFatFS::mountBound() {
   if (!looksLikeFat(_partition)) {
     return false;
   }
@@ -98,6 +110,18 @@ bool USBMscFatFS::begin(USBHostMSC &msc, uint8_t dev_addr) {
 
   USBMscPartitionTable::bindFirstMatching(msc, dev_addr, isFatPartitionType,
                                            _partition);
+  return mountBound();
+}
+
+bool USBMscFatFS::begin(USBMscBlockDevice &dev) {
+  reset();
+
+  USBMscPartitionTable::bindFirstMatching(dev, isFatPartitionType,
+                                           _partition);
+  return mountBound();
+}
+
+bool USBMscFatFS::mountBound() {
   if (!looksLikeFat(_partition)) {
     return false;
   }

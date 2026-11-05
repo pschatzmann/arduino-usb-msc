@@ -30,6 +30,8 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "USBMscBlockDevice.h"
+
 #if defined(ARDUINO_ARCH_ESP32) && !defined(USBDEVMSC_USE_ADAFRUIT_TINYUSB)
 #include "sdkconfig.h"
 #include "soc/soc_caps.h"
@@ -58,22 +60,6 @@
     "select Tools > USB Stack > \"Adafruit TinyUSB\"."
 #endif
 #endif
-
-/**
- * @brief Block storage that can be exported over USB.
- * Block size is normally 512. read()/write() return true on success.
- */
-class USBMscBlockDevice {
-public:
-  virtual ~USBMscBlockDevice() {}
-  virtual uint32_t blockCount() = 0;
-  virtual uint16_t blockSize() { return 512; }
-  virtual bool readBlocks(uint32_t lba, void *buffer, uint32_t count) = 0;
-  virtual bool writeBlocks(uint32_t lba, const void *buffer,
-                           uint32_t count) = 0;
-  /// Called when the PC asks to flush its write cache. Default: no-op.
-  virtual void flush() {}
-};
 
 /**
  * @brief Simple RAM disk. Pass your own buffer (size = blocks * 512) or
