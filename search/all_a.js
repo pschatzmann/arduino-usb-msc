@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['just_20which_20class_20you_20reference_0',['Backend selection: it&apos;s just which class you reference',['../md_docs_2FILESYSTEMS.html#autotoc_md34',1,'']]]
+  ['lba_5fstart_0',['lba_start',['../structUSBMscPartitionEntry.html#a91269566f3c8eb473d8e761c31767358',1,'USBMscPartitionEntry']]],
+  ['license_1',['License',['../index.html#autotoc_md2',1,'']]]
 ];
