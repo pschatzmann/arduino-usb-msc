@@ -1,0 +1,5 @@
+<map id="USBMscRamDisk" name="USBMscRamDisk">
+<area shape="rect" id="Node000001" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="16,81,150,109"/>
+<area shape="rect" id="Node000002" href="$classUSBMscBlockDevice.html" title="Block storage that can be exported over USB. Block size is normally 512. read()/write() return true o..." alt="" coords="5,5,161,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,47,86,81,80,80,81,51"/>
+</map>

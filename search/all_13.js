@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['s_20just_20which_20class_20you_20reference_0',['Backend selection: it&apos;s just which class you reference',['../md_docs_2FILESYSTEMS.html#autotoc_md34',1,'']]],
+  ['s_20own_20tt_20usbhostmsc_20tt_1',['Name clash with the core&apos;s own &lt;tt&gt;USBHostMSC&lt;/tt&gt;',['../md_docs_2ESP32__NATIVE.html#autotoc_md24',1,'']]],
+  ['s_20tinyusb_20default_2',['S2/S3: using the core&apos;s TinyUSB (default)',['../md_docs_2ESP32__NATIVE.html#autotoc_md23',1,'']]],
+  ['s2_20s3_20p4_3a_20native_20usb_20host_3',['ESP32-S2/S3/P4: native USB host',['../md_docs_2ESP32__NATIVE.html',1,'']]],
+  ['s2_20s3_3a_20using_20the_20core_20s_20tinyusb_20default_4',['S2/S3: using the core&apos;s TinyUSB (default)',['../md_docs_2ESP32__NATIVE.html#autotoc_md23',1,'']]],
+  ['s3_20p4_3a_20native_20usb_20host_5',['ESP32-S2/S3/P4: native USB host',['../md_docs_2ESP32__NATIVE.html',1,'']]],
+  ['s3_3a_20using_20the_20core_20s_20tinyusb_20default_6',['S2/S3: using the core&apos;s TinyUSB (default)',['../md_docs_2ESP32__NATIVE.html#autotoc_md23',1,'']]],
+  ['sector_5fcount_7',['sector_count',['../structUSBMscPartitionEntry.html#a88ee527051218956c1c5537eaffd1bc5',1,'USBMscPartitionEntry']]],
+  ['seek_8',['seek',['../classusbmscfs_1_1BackendFile.html#a38410192d137950c84c1d1fa6e98a5c9',1,'usbmscfs::BackendFile']]],
+  ['selection_3a_20it_20s_20just_20which_20class_20you_20reference_9',['Backend selection: it&apos;s just which class you reference',['../md_docs_2FILESYSTEMS.html#autotoc_md34',1,'']]],
+  ['serial_20host_20mode_10',['One USB port: drive, power and Serial (host mode)',['../md_docs_2SINGLE__PORT.html',1,'']]],
+  ['serial_20tt_20back_11',['Getting &lt;tt&gt;Serial&lt;/tt&gt; back',['../md_docs_2SINGLE__PORT.html#autotoc_md56',1,'']]],
+  ['setid_12',['setID',['../classUSBDeviceMSC.html#ae259491194748565e6aacfcac4181e0d',1,'USBDeviceMSC']]],
+  ['setup_13',['STM32 setup',['../md_docs_2STM32.html',1,'']]],
+  ['setwritable_14',['setWritable',['../classUSBDeviceMSC.html#a39c1a514cd1f0817004e830b73e3b41e',1,'USBDeviceMSC']]],
+  ['single_20usb_20port_15',['Boards with a single USB port',['../md_docs_2SINGLE__PORT.html#autotoc_md54',1,'']]],
+  ['single_5fport_2emd_16',['SINGLE_PORT.md',['../SINGLE__PORT_8md.html',1,'']]],
+  ['size_17',['size',['../classusbmscfs_1_1BackendFile.html#adcc457f154c00e8337b3cbb4b52d7076',1,'usbmscfs::BackendFile']]],
+  ['start_20be_20a_20usb_20stick_18',['Device mode quick start (be a USB stick)',['../md_docs_2DEVICE__QUICKSTART.html',1,'']]],
+  ['start_20read_20a_20usb_20stick_19',['Host mode quick start (read a USB stick)',['../md_docs_2HOST__QUICKSTART.html',1,'']]],
+  ['stick_20',['stick',['../md_docs_2DEVICE__QUICKSTART.html',1,'Device mode quick start (be a USB stick)'],['../md_docs_2HOST__QUICKSTART.html',1,'Host mode quick start (read a USB stick)']]],
+  ['stm32_20setup_21',['STM32 setup',['../md_docs_2STM32.html',1,'']]],
+  ['stm32_2emd_22',['STM32.md',['../STM32_8md.html',1,'']]],
+  ['supported_20boards_23',['Supported boards',['../md_docs_2MAX3421E.html#autotoc_md43',1,'']]],
+  ['supported_20targets_20and_20board_20configuration_24',['Supported targets and board configuration',['../md_docs_2BOARDS.html',1,'']]]
+];

@@ -1,0 +1,12 @@
+<map id="src/USBMscPartition.h" name="src/USBMscPartition.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="140,232,210,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,36,67,64,53,102,49,144,52,164,60,183,73,199,89,212,127,232,122,233,86,216,69,203,55,186,47,166,43,144,48,101,62,61,80,31"/>
+<area shape="rect" id="Node000003" href="$USBHostMSC_8h.html" title=" " alt="" coords="83,81,203,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,31,127,68,121,69,97,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="69,157,217,184"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,107,146,142,140,140,142,112"/>
+<area shape="rect" id="Node000005" href="$USBMscFSBackend_8h.html" title=" " alt="" coords="241,157,397,184"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="175,107,276,149,271,152,174,112"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="296,184,215,228,213,223,291,185"/>
+</map>

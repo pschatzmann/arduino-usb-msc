@@ -1,0 +1,5 @@
+<map id="USBMscFSPool&lt; FSType, MaxDevices &gt;" name="USBMscFSPool&lt; FSType, MaxDevices &gt;">
+<area shape="rect" id="Node000001" title="Mounts up to MaxDevices FSType filesystems simultaneously, one per USB Mass Storage device address – ..." alt="" coords="5,81,187,126"/>
+<area shape="rect" id="Node000002" href="$classUSBMscFSBackend.html" title="Interface implemented by filesystem&#45;mounting classes (USBMscFatFS, USBMscExt4FS, USBMscAutoFS) so one..." alt="" coords="24,5,168,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,47,99,81,93,79,94,51"/>
+</map>

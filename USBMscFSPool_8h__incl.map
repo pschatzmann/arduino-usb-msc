@@ -1,0 +1,12 @@
+<map id="src/USBMscFSPool.h" name="src/USBMscFSPool.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="130,5,282,33"/>
+<area shape="rect" id="Node000002" href="$USBHostMSC_8h.html" title=" " alt="" coords="98,81,217,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,31,177,70,172,66,195,36"/>
+<area shape="rect" id="Node000004" href="$USBMscFSBackend_8h.html" title=" " alt="" coords="177,157,333,184"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="212,31,232,80,250,142,245,141,227,82,210,36"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,157,153,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,111,106,148,102,144,145,107"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="176,107,229,147,223,148,175,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="220,232,290,260"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="257,183,257,218,253,215,253,187"/>
+</map>

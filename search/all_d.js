@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['macos_20cmake_0',['Desktop unit tests (Linux/macOS, CMake)',['../md_docs_2TESTING.html#autotoc_md64',1,'']]],
+  ['max3421e_20chip_1',['USB host via an external MAX3421E chip',['../md_docs_2MAX3421E.html',1,'']]],
+  ['max3421e_2emd_2',['MAX3421E.md',['../MAX3421E_8md.html',1,'']]],
+  ['maxdevices_3',['USBMscFSPool&lt;FSType, MaxDevices&gt;',['../md_docs_2MULTIPLE__DEVICES.html#autotoc_md50',1,'']]],
+  ['maxlun_4',['maxLun',['../classUSBHostMSC.html#a4bfe807e143799d432b8f6cf42d0f52b',1,'USBHostMSC']]],
+  ['mediapresent_5',['mediaPresent',['../classUSBDeviceMSC.html#aca3bf03c392eb7e32c825aaff1705b91',1,'USBDeviceMSC']]],
+  ['methods_6',['Methods',['../md_docs_2BLOCK__API.html#autotoc_md4',1,'']]],
+  ['mkdir_7',['mkdir',['../classusbmscfs_1_1Ext4Backend.html#a9a497cddd08fbf7f8876935f5674d45a',1,'usbmscfs::Ext4Backend::mkdir()'],['../classusbmscfs_1_1FatBackend.html#a991716300b6948909b93b9ac8a5d55c3',1,'usbmscfs::FatBackend::mkdir()'],['../classusbmscfs_1_1Backend.html#a6c5602ccdf55e96ff14effd6b7fd2791',1,'usbmscfs::Backend::mkdir()']]],
+  ['mode_8',['mode',['../md_docs_2BOARDS.html#autotoc_md11',1,'Device mode'],['../md_docs_2DEVICE__API.html#autotoc_md17',1,'Filesystems in device mode'],['../md_docs_2SINGLE__PORT.html',1,'One USB port: drive, power and Serial (host mode)']]],
+  ['mode_20api_20tt_20usbdevicemsc_20tt_9',['Device mode API (&lt;tt&gt;USBDeviceMSC&lt;/tt&gt;)',['../md_docs_2DEVICE__API.html',1,'']]],
+  ['mode_20quick_20start_20be_20a_20usb_20stick_10',['Device mode quick start (be a USB stick)',['../md_docs_2DEVICE__QUICKSTART.html',1,'']]],
+  ['mode_20quick_20start_20read_20a_20usb_20stick_11',['Host mode quick start (read a USB stick)',['../md_docs_2HOST__QUICKSTART.html',1,'']]],
+  ['mode_20tt_20device_5f_20tt_12',['Device mode (&lt;tt&gt;device_*&lt;/tt&gt;)',['../md_docs_2TESTING.html#autotoc_md66',1,'']]],
+  ['mode_20tt_20host_5f_20tt_13',['Host mode (&lt;tt&gt;host_*&lt;/tt&gt;)',['../md_docs_2TESTING.html#autotoc_md65',1,'']]],
+  ['mode_20tt_20usbdevicemsc_5f_20tt_14',['Device mode (&lt;tt&gt;USBDeviceMSC_*&lt;/tt&gt;)',['../md_docs_2EXAMPLES.html#autotoc_md29',1,'']]],
+  ['mode_20tt_20usbhostmsc_5f_20tt_15',['Host mode (&lt;tt&gt;USBHostMSC_*&lt;/tt&gt;)',['../md_docs_2EXAMPLES.html#autotoc_md28',1,'']]],
+  ['mount_16',['mount',['../classusbmscfs_1_1Backend.html#a3f56244bd959fbae90a43c2c1d784361',1,'usbmscfs::Backend::mount()'],['../classusbmscfs_1_1FatBackend.html#a85e12cbd82a5bf32d015e691509c0941',1,'usbmscfs::FatBackend::mount()'],['../classusbmscfs_1_1Ext4Backend.html#a5059ffde1a2f03846a9c246e6f5ff99c',1,'usbmscfs::Ext4Backend::mount()']]],
+  ['mountcallback_17',['MountCallback',['../classUSBHostMSC.html#ac8a2d6bff930dfa657a951e905425899',1,'USBHostMSC']]],
+  ['mounted_18',['mounted',['../classUSBMscFSPool.html#ab46ba6c714916338033d73e20fa25fbd',1,'USBMscFSPool']]],
+  ['mountedcount_19',['mountedCount',['../classUSBMscFSPool.html#a727747edbb3299494d08ec505dcc3fcc',1,'USBMscFSPool']]],
+  ['mounteddevicecount_20',['mountedDeviceCount',['../classUSBHostMSC.html#a80c399a8563922958d0c9f51b7e56a5e',1,'USBHostMSC']]],
+  ['msc_21',['usb-msc',['../index.html',1,'']]],
+  ['mscinquiry_22',['MSCInquiry',['../structMSCInquiry.html',1,'']]],
+  ['multiple_20devices_23',['multiple devices',['../md_docs_2MULTIPLE__DEVICES.html',1,'Hubs and multiple devices'],['../md_docs_2BLOCK__API.html#autotoc_md8',1,'Multiple devices']]],
+  ['multiple_5fdevices_2emd_24',['MULTIPLE_DEVICES.md',['../MULTIPLE__DEVICES_8md.html',1,'']]]
+];

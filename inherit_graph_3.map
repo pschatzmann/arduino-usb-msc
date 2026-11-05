@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classUSBMscBlockDevice.html" title="Block storage that can be exported over USB. Block size is normally 512. read()/write() return true o..." alt="" coords="5,32,161,60"/>
+<area shape="rect" id="Node000001" href="$classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="209,5,342,33"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="176,30,211,28,205,29,177,36"/>
+<area shape="rect" id="Node000002" href="$classUSBMscSdCard.html" title=" " alt="" coords="215,57,336,85"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="176,55,217,63,212,63,176,61"/>
+</map>

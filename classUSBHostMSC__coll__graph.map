@@ -1,0 +1,4 @@
+<map id="USBHostMSC" name="USBHostMSC">
+<area shape="rect" id="Node000001" title="Blocking wrapper around TinyUSB&#39;s USB Host Mass Storage (tuh_msc_*) class driver. One instance manage..." alt="" coords="5,5,113,33"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="129,13,139,19,131,25,113,27,113,22,129,20,134,19,128,18"/>
+</map>
