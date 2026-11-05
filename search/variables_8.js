@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_0',['type',['../structUSBMscPartitionEntry.html#ae77b3e415737321100fff41fef7a1244',1,'USBMscPartitionEntry']]]
+  ['sector_5fcount_0',['sector_count',['../structUSBMscPartitionEntry.html#a88ee527051218956c1c5537eaffd1bc5',1,'USBMscPartitionEntry']]]
 ];

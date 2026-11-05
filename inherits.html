@@ -93,11 +93,13 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" usemap="#aUSBMscBlockDevice" alt=""/>
 <map name="aUSBMscBlockDevice" id="aUSBMscBlockDevice">
-<area shape="rect" href="classUSBMscBlockDevice.html" title="Block storage that can be exported over USB. Block size is normally 512. read()/write() return true o..." alt="" coords="5,32,161,60"/>
-<area shape="rect" href="classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="209,5,342,33"/>
-<area shape="poly" title=" " alt="" coords="176,30,211,28,205,29,177,36"/>
-<area shape="rect" href="classUSBMscSdCard.html" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="215,57,336,85"/>
-<area shape="poly" title=" " alt="" coords="176,55,217,63,212,63,176,61"/>
+<area shape="rect" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou..." alt="" coords="5,57,161,85"/>
+<area shape="rect" href="classUSBMscNbdBlockDevice.html" title="USBMscBlockDevice on top of an nbd::NBDClient (512&#45;byte blocks)." alt="" coords="209,5,390,33"/>
+<area shape="poly" title=" " alt="" coords="158,51,241,32,236,35,159,56"/>
+<area shape="rect" href="classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="233,57,366,85"/>
+<area shape="poly" title=" " alt="" coords="176,69,235,70,230,72,176,74"/>
+<area shape="rect" href="classUSBMscSdCard.html" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="239,109,360,137"/>
+<area shape="poly" title=" " alt="" coords="159,87,241,108,236,109,158,92"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_4.png" border="0" usemap="#ausbmscfs_1_1Backend" alt=""/>

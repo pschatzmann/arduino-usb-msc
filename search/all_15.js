@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['_7ebackend_0',['~Backend',['../classusbmscfs_1_1Backend.html#a507c0459af19c87f5da4f4c23a405b34',1,'usbmscfs::Backend']]],
-  ['_7ebackendfile_1',['~BackendFile',['../classusbmscfs_1_1BackendFile.html#acd963081082eb4c7e1a0604109d06e83',1,'usbmscfs::BackendFile']]],
-  ['_7eext4backend_2',['~Ext4Backend',['../classusbmscfs_1_1Ext4Backend.html#a8b2359cbe5dfb05a187aab821a6981d2',1,'usbmscfs::Ext4Backend']]],
-  ['_7efatbackend_3',['~FatBackend',['../classusbmscfs_1_1FatBackend.html#a381c2e665180c8b74ae80418a196c955',1,'usbmscfs::FatBackend']]],
-  ['_7eusbdevicemsc_4',['~USBDeviceMSC',['../classUSBDeviceMSC.html#a85fc84b6a5482795ead6f3b0e1c9aeab',1,'USBDeviceMSC']]],
-  ['_7eusbmscblockdevice_5',['~USBMscBlockDevice',['../classUSBMscBlockDevice.html#a79d2df5c2adc65a96c2b7f8e6e39920d',1,'USBMscBlockDevice']]],
-  ['_7eusbmscfsbackend_6',['~USBMscFSBackend',['../classUSBMscFSBackend.html#a7fe7d49c2cbcf20fce3a096813471c00',1,'USBMscFSBackend']]],
-  ['_7eusbmscramdisk_7',['~USBMscRamDisk',['../classUSBMscRamDisk.html#ac1372d9d15f3c540c7bcabdea89c792a',1,'USBMscRamDisk']]]
+  ['writable_0',['writable',['../classUSBDeviceMSC.html#ab308db029ce4668e546f16d6798586bd',1,'USBDeviceMSC']]],
+  ['write_1',['write',['../classusbmscfs_1_1BackendFile.html#ae427471f740c0bbe7764c32cdcf4358d',1,'usbmscfs::BackendFile']]],
+  ['writeblocks_2',['writeblocks',['../classUSBMscRamDisk.html#ac0a6c81a61079c7917955eb5b9ddc7e6',1,'USBMscRamDisk::writeBlocks()'],['../classUSBHostMSC.html#a7475c9d10551e565d54264cb03241f5b',1,'USBHostMSC::writeBlocks()'],['../classUSBMscBlockDevice.html#a3788f042efbfef66cd725b59bcb89290',1,'USBMscBlockDevice::writeBlocks()'],['../classUSBMscNbdBlockDevice.html#a00c6b0112bf41131347f71f9d305747e',1,'USBMscNbdBlockDevice::writeBlocks()'],['../classUSBMscPartition.html#a8ba9686f69649b0ae89a967a4cd39eea',1,'USBMscPartition::writeBlocks()'],['../classUSBMscSdCard.html#aedaf40577ee8ad272ab72a431b6feb66',1,'USBMscSdCard::writeBlocks()']]],
+  ['written_3',['written',['../classUSBDeviceMSC.html#add3c05a8ea6003e38c2df605f77a5af7',1,'USBDeviceMSC']]]
 ];

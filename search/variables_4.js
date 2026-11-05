@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lba_5fstart_0',['lba_start',['../structUSBMscPartitionEntry.html#a91269566f3c8eb473d8e761c31767358',1,'USBMscPartitionEntry']]]
+  ['kblocksize_0',['kBlockSize',['../classUSBMscNbdBlockDevice.html#a518cbb2ec34a5841db0df44031b72977',1,'USBMscNbdBlockDevice']]]
 ];

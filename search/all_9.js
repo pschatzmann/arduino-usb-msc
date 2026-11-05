@@ -7,5 +7,5 @@ var searchData=
   ['isfatpartitiontype_4',['isfatpartitiontype',['../USBMscPartition_8cpp.html#abfcebe32259ec2c6f69db0b6c35195f6',1,'isFatPartitionType(uint8_t type):&#160;USBMscPartition.cpp'],['../USBMscPartition_8h.html#abfcebe32259ec2c6f69db0b6c35195f6',1,'isFatPartitionType(uint8_t type):&#160;USBMscPartition.cpp']]],
   ['islinuxpartitiontype_5',['islinuxpartitiontype',['../USBMscPartition_8cpp.html#af045c6b1c4517ed6ba28337889cae778',1,'isLinuxPartitionType(uint8_t type):&#160;USBMscPartition.cpp'],['../USBMscPartition_8h.html#af045c6b1c4517ed6ba28337889cae778',1,'isLinuxPartitionType(uint8_t type):&#160;USBMscPartition.cpp']]],
   ['ismounted_6',['isMounted',['../classUSBHostMSC.html#a0116ca32639e570ae28745be153495ef',1,'USBHostMSC']]],
-  ['isreadonly_7',['isreadonly',['../classusbmscfs_1_1Ext4Backend.html#a5c1617481e27c90890ff5a99bb780680',1,'usbmscfs::Ext4Backend::isReadOnly()'],['../classusbmscfs_1_1Backend.html#a53d33cbaf56d9fd4deccc3f33e91e81f',1,'usbmscfs::Backend::isReadOnly()']]]
+  ['isreadonly_7',['isreadonly',['../classusbmscfs_1_1Ext4Backend.html#a5c1617481e27c90890ff5a99bb780680',1,'usbmscfs::Ext4Backend::isReadOnly()'],['../classusbmscfs_1_1Backend.html#a53d33cbaf56d9fd4deccc3f33e91e81f',1,'usbmscfs::Backend::isReadOnly()'],['../classUSBMscNbdBlockDevice.html#ab7f21610b871558a1620c6002af6b84c',1,'USBMscNbdBlockDevice::isReadOnly()']]]
 ];

@@ -92,11 +92,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7243f19bdc03af7dd2e933713b616e57" id="r_a7243f19bdc03af7dd2e933713b616e57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#a7243f19bdc03af7dd2e933713b616e57">begin</a> (<a class="el" href="classUSBHostMSC.html">USBHostMSC</a> &amp;msc, uint8_t dev_addr)</td></tr>
 <tr class="memdesc:a7243f19bdc03af7dd2e933713b616e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind to the whole disk (no partition offset).  <br /></td></tr>
 <tr class="separator:a7243f19bdc03af7dd2e933713b616e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e8ae79bc5791d3968a7624f5b4c1df" id="r_a72e8ae79bc5791d3968a7624f5b4c1df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#a72e8ae79bc5791d3968a7624f5b4c1df">begin</a> (<a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;dev, const <a class="el" href="structUSBMscPartitionEntry.html">USBMscPartitionEntry</a> &amp;entry)</td></tr>
+<tr class="separator:a72e8ae79bc5791d3968a7624f5b4c1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74fffea97fecc5e232ee0554e771b214" id="r_a74fffea97fecc5e232ee0554e771b214"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#a74fffea97fecc5e232ee0554e771b214">begin</a> (<a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;dev)</td></tr>
+<tr class="memdesc:a74fffea97fecc5e232ee0554e771b214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind to the whole block device (no partition offset).  <br /></td></tr>
+<tr class="separator:a74fffea97fecc5e232ee0554e771b214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab17902f3e07f3d0fa88b177436e0ef30" id="r_ab17902f3e07f3d0fa88b177436e0ef30"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#ab17902f3e07f3d0fa88b177436e0ef30">blockSize</a> () const</td></tr>
 <tr class="separator:ab17902f3e07f3d0fa88b177436e0ef30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91e7013ed6e247bd4ea384946b0d3445" id="r_a91e7013ed6e247bd4ea384946b0d3445"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#a91e7013ed6e247bd4ea384946b0d3445">blockCount</a> () const</td></tr>
 <tr class="separator:a91e7013ed6e247bd4ea384946b0d3445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7825f7934f0863b915190ca6ae44fef" id="r_ae7825f7934f0863b915190ca6ae44fef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#ae7825f7934f0863b915190ca6ae44fef">deviceAddress</a> () const</td></tr>
+<tr class="memdesc:ae7825f7934f0863b915190ca6ae44fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB device address; 0 when bound to a <a class="el" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou...">USBMscBlockDevice</a>.  <br /></td></tr>
 <tr class="separator:ae7825f7934f0863b915190ca6ae44fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1fe621bfd0e1c6a58ec55111c63abf9" id="r_ad1fe621bfd0e1c6a58ec55111c63abf9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSBMscPartition.html#ad1fe621bfd0e1c6a58ec55111c63abf9">readBlocks</a> (uint32_t lba, void *buffer, uint16_t count)</td></tr>
 <tr class="separator:ad1fe621bfd0e1c6a58ec55111c63abf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,7 +139,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7243f19bdc03af7dd2e933713b616e57" name="a7243f19bdc03af7dd2e933713b616e57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7243f19bdc03af7dd2e933713b616e57">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7243f19bdc03af7dd2e933713b616e57">&#9670;&#160;</a></span>begin() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +169,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="afc94136fb9069677e58b0e29163bd2f5" name="afc94136fb9069677e58b0e29163bd2f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc94136fb9069677e58b0e29163bd2f5">&#9670;&#160;</a></span>begin() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc94136fb9069677e58b0e29163bd2f5">&#9670;&#160;</a></span>begin() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,6 +201,55 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Bind to a single partition described by entry. </p>
+
+</div>
+</div>
+<a id="a74fffea97fecc5e232ee0554e771b214" name="a74fffea97fecc5e232ee0554e771b214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74fffea97fecc5e232ee0554e771b214">&#9670;&#160;</a></span>begin() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void USBMscPartition::begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bind to the whole block device (no partition offset). </p>
+
+</div>
+</div>
+<a id="a72e8ae79bc5791d3968a7624f5b4c1df" name="a72e8ae79bc5791d3968a7624f5b4c1df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e8ae79bc5791d3968a7624f5b4c1df">&#9670;&#160;</a></span>begin() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void USBMscPartition::begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUSBMscBlockDevice.html">USBMscBlockDevice</a> &amp;&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUSBMscPartitionEntry.html">USBMscPartitionEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bind to a single partition of a block device. The device must stay valid for as long as this object (and any filesystem on it) is used. </p>
 
 </div>
 </div>
@@ -262,6 +317,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>USB device address; 0 when bound to a <a class="el" href="classUSBMscBlockDevice.html" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou...">USBMscBlockDevice</a>. </p>
 
 </div>
 </div>

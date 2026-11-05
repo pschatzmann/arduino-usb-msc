@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vendor_5fid_0',['vendor_id',['../structMSCInquiry.html#a3c296f46a55e345c5e9ad0650fdaeba4',1,'MSCInquiry']]]
+  ['type_0',['type',['../structUSBMscPartitionEntry.html#ae77b3e415737321100fff41fef7a1244',1,'USBMscPartitionEntry']]]
 ];

@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$classusbmscfs_1_1Backend.html" title="Minimal mounted&#45;filesystem interface, implemented once per filesystem backend." alt="" coords="5,32,152,60"/>
 <area shape="rect" id="Node000001" href="$classusbmscfs_1_1Ext4Backend.html" title="ext2/ext3/ext4 filesystem backend built on TinyEXT4 (MIT), a header&#45;only ext implementation without j..." alt="" coords="200,5,375,33"/>
-<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="166,32,202,30,196,31,167,37"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="166,32,202,30,196,31,167,37"/>
 <area shape="rect" id="Node000002" href="$classusbmscfs_1_1FatBackend.html" title="FAT12/16/32/exFAT filesystem backend built on TinyFATFS." alt="" coords="205,57,370,85"/>
-<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="167,54,207,61,201,61,167,59"/>
+<area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="167,54,207,61,201,61,167,59"/>
 </map>

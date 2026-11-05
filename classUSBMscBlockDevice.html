@@ -77,20 +77,22 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Block storage that can be exported over USB. Block size is normally 512. read()/write() return true on success.  
+<p>Block storage: the common interface of everything that can be exported over USB (<a class="el" href="classUSBDeviceMSC.html" title="Exports a USBMscBlockDevice to the USB host (PC).">USBDeviceMSC</a>) or mounted as a filesystem (USBMscFatFS::begin(USBMscBlockDevice&amp;), USBMscExt4FS, ...).  
  <a href="classUSBMscBlockDevice.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="USBDeviceMSC_8h_source.html">USBDeviceMSC.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="USBMscBlockDevice_8h_source.html">USBMscBlockDevice.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for USBMscBlockDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="classUSBMscBlockDevice__inherit__graph.png" border="0" usemap="#aUSBMscBlockDevice_inherit__map" alt="Inheritance graph"/></div>
 <map name="aUSBMscBlockDevice_inherit__map" id="aUSBMscBlockDevice_inherit__map">
-<area shape="rect" title="Block storage that can be exported over USB. Block size is normally 512. read()/write() return true o..." alt="" coords="69,5,224,33"/>
-<area shape="rect" href="classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="5,81,139,109"/>
-<area shape="poly" title=" " alt="" coords="125,43,87,83,84,78,120,45"/>
-<area shape="rect" href="classUSBMscSdCard.html" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="162,81,283,109"/>
-<area shape="poly" title=" " alt="" coords="172,41,212,81,207,80,170,46"/>
+<area shape="rect" title="Block storage: the common interface of everything that can be exported over USB (USBDeviceMSC) or mou..." alt="" coords="200,5,355,33"/>
+<area shape="rect" href="classUSBMscNbdBlockDevice.html" title="USBMscBlockDevice on top of an nbd::NBDClient (512&#45;byte blocks)." alt="" coords="5,81,187,109"/>
+<area shape="poly" title=" " alt="" coords="234,39,129,83,127,78,228,39"/>
+<area shape="rect" href="classUSBMscRamDisk.html" title="Simple RAM disk. Pass your own buffer (size = blocks * 512) or let it malloc one. The content is lost..." alt="" coords="211,81,344,109"/>
+<area shape="poly" title=" " alt="" coords="279,47,279,82,275,79,275,51"/>
+<area shape="rect" href="classUSBMscSdCard.html" title="USBMscBlockDevice backed by an SdFat SD card (SPI or SDIO)." alt="" coords="368,81,488,109"/>
+<area shape="poly" title=" " alt="" coords="318,37,404,81,399,81,317,43"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -111,7 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c5cdb09f75691f35902fab61b99f008"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Block storage that can be exported over USB. Block size is normally 512. read()/write() return true on success. </p>
+<div class="textblock"><p>Block storage: the common interface of everything that can be exported over USB (<a class="el" href="classUSBDeviceMSC.html" title="Exports a USBMscBlockDevice to the USB host (PC).">USBDeviceMSC</a>) or mounted as a filesystem (USBMscFatFS::begin(USBMscBlockDevice&amp;), USBMscExt4FS, ...). </p>
+<p>Implement it for a RAM disk, an SD card, SPI flash, an NBD export (see <a class="el" href="USBMscNbdBlockDevice_8h.html" title="Adapter that turns a connected TinyNBD client into a USBMscBlockDevice, so a remote NBD export can be...">USBMscNbdBlockDevice.h</a>) or any other sector-addressable storage. Block size is normally 512 &ndash; the filesystem backends only support 512. <a class="el" href="classUSBMscBlockDevice.html#a6ed8e96aefe2c3fbc986941eb000a823">readBlocks()</a>/writeBlocks() return true on success.</p>
+<p>This header has no dependencies, so it can be used in host and device builds alike. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a79d2df5c2adc65a96c2b7f8e6e39920d" name="a79d2df5c2adc65a96c2b7f8e6e39920d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79d2df5c2adc65a96c2b7f8e6e39920d">&#9670;&#160;</a></span>~USBMscBlockDevice()</h2>
@@ -162,7 +166,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#a91c22c52eb69921635db796888867936">USBMscRamDisk</a>, and <a class="el" href="classUSBMscSdCard.html#a89e5e88b99254af1d249d22b0c667b5b">USBMscSdCard</a>.</p>
+<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#a91c22c52eb69921635db796888867936">USBMscRamDisk</a>, <a class="el" href="classUSBMscNbdBlockDevice.html#a506fe25a9e6a57c3b5f9db27c0045a5d">USBMscNbdBlockDevice</a>, and <a class="el" href="classUSBMscSdCard.html#a89e5e88b99254af1d249d22b0c667b5b">USBMscSdCard</a>.</p>
 
 </div>
 </div>
@@ -188,6 +192,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classUSBMscNbdBlockDevice.html#ab395e0db870670c4101fb96e8081ab99">USBMscNbdBlockDevice</a>.</p>
 
 </div>
 </div>
@@ -216,7 +222,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Called when the PC asks to flush its write cache. Default: no-op. </p>
 
-<p>Reimplemented in <a class="el" href="classUSBMscSdCard.html#a779453113aedde74eb3694090c8af632">USBMscSdCard</a>.</p>
+<p>Reimplemented in <a class="el" href="classUSBMscNbdBlockDevice.html#a56cc657d3ad48b665211a126f3c37ec3">USBMscNbdBlockDevice</a>, and <a class="el" href="classUSBMscSdCard.html#a779453113aedde74eb3694090c8af632">USBMscSdCard</a>.</p>
 
 </div>
 </div>
@@ -260,7 +266,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#aeac82af124d268ed0ebc10920c512dd1">USBMscRamDisk</a>, and <a class="el" href="classUSBMscSdCard.html#a36f5a7cccc66c6141fb6ba057bb2e152">USBMscSdCard</a>.</p>
+<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#aeac82af124d268ed0ebc10920c512dd1">USBMscRamDisk</a>, <a class="el" href="classUSBMscNbdBlockDevice.html#a8b4460d7df302868f23fd2edb25c5c0a">USBMscNbdBlockDevice</a>, and <a class="el" href="classUSBMscSdCard.html#a36f5a7cccc66c6141fb6ba057bb2e152">USBMscSdCard</a>.</p>
 
 </div>
 </div>
@@ -304,12 +310,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#ac0a6c81a61079c7917955eb5b9ddc7e6">USBMscRamDisk</a>, and <a class="el" href="classUSBMscSdCard.html#aedaf40577ee8ad272ab72a431b6feb66">USBMscSdCard</a>.</p>
+<p>Implemented in <a class="el" href="classUSBMscRamDisk.html#ac0a6c81a61079c7917955eb5b9ddc7e6">USBMscRamDisk</a>, <a class="el" href="classUSBMscNbdBlockDevice.html#a00c6b0112bf41131347f71f9d305747e">USBMscNbdBlockDevice</a>, and <a class="el" href="classUSBMscSdCard.html#aedaf40577ee8ad272ab72a431b6feb66">USBMscSdCard</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="USBDeviceMSC_8h_source.html">USBDeviceMSC.h</a></li>
+<li>src/<a class="el" href="USBMscBlockDevice_8h_source.html">USBMscBlockDevice.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

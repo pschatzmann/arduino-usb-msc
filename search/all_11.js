@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['task_0',['task',['../classUSBHostMSC.html#a22f773d7ff8170ae3982ee90d00f9504',1,'USBHostMSC']]],
-  ['track_1',['track',['../classusbmscfs_1_1Backend.html#aa1776b21bd492ab6a195443822335ae5',1,'usbmscfs::Backend']]],
-  ['tuh_5fmsc_5fmount_5fcb_2',['tuh_msc_mount_cb',['../USBHostMSC_8cpp.html#af34a338ee2c52a7069b60172e64ee182',1,'USBHostMSC.cpp']]],
-  ['tuh_5fmsc_5fumount_5fcb_3',['tuh_msc_umount_cb',['../USBHostMSC_8cpp.html#ad6b481be537b8016eba5c698799ea5d4',1,'USBHostMSC.cpp']]],
-  ['type_4',['type',['../structUSBMscPartitionEntry.html#ae77b3e415737321100fff41fef7a1244',1,'USBMscPartitionEntry']]]
+  ['sector_5fcount_0',['sector_count',['../structUSBMscPartitionEntry.html#a88ee527051218956c1c5537eaffd1bc5',1,'USBMscPartitionEntry']]],
+  ['seek_1',['seek',['../classusbmscfs_1_1BackendFile.html#a38410192d137950c84c1d1fa6e98a5c9',1,'usbmscfs::BackendFile']]],
+  ['setid_2',['setID',['../classUSBDeviceMSC.html#ae259491194748565e6aacfcac4181e0d',1,'USBDeviceMSC']]],
+  ['setwritable_3',['setWritable',['../classUSBDeviceMSC.html#a39c1a514cd1f0817004e830b73e3b41e',1,'USBDeviceMSC']]],
+  ['size_4',['size',['../classusbmscfs_1_1BackendFile.html#adcc457f154c00e8337b3cbb4b52d7076',1,'usbmscfs::BackendFile']]]
 ];
