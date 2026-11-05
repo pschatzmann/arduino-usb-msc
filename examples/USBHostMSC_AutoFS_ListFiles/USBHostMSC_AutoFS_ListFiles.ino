@@ -7,7 +7,7 @@
  * listDir() works for both. fs::FS is what other libraries take (e.g.
  * WebServer::serveStatic()).
  *
- * ArduinoFS and tinyext4::ArduinoFS turn a mounted volume into an
+ * fatfs::ArduinoFS and tinyext4::ArduinoFS turn a mounted volume into an
  * fs::FS; they exist on the ESP32 and RP2040 cores. This sketch pulls both
  * filesystems into the firmware; use USBHostMSC_FatFS_ListFiles or
  * USBHostMSC_Ext4ReadFile if you only need one.
@@ -28,9 +28,11 @@
 
 USBHostMSC msc;
 
+// fatfs:: is needed here: with FS.h included (for fs::FS), the cores also
+// have a global SDClass / File, so the unqualified names are ambiguous
 USBHostMscFatIO fatIO(msc);
-SDClass usbFat;
-ArduinoFS fatFS(usbFat);
+fatfs::SDClass usbFat;
+fatfs::ArduinoFS fatFS(usbFat);
 
 USBHostMscExt4IO extIO(msc);
 tinyext4::Ext4FS usbExt4;
