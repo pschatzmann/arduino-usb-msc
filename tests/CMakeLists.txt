@@ -1,0 +1,6 @@
+foreach(t partition fat ext4 lifetime)
+  add_executable(test_${t} test_${t}.cpp)
+  target_link_libraries(test_${t} PRIVATE usbmsc_fs)
+  target_compile_options(test_${t} PRIVATE -Wall -Wextra)
+  add_test(NAME ${t} COMMAND test_${t})
+endforeach()

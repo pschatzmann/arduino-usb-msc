@@ -1,0 +1,66 @@
+#######################################
+# Syntax Coloring Map for usb-host-msc
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+USBHostMSC	KEYWORD1
+MSCInquiry	KEYWORD1
+USBMscFSBackend	KEYWORD1
+USBMscFatFS	KEYWORD1
+USBMscFile	KEYWORD1
+USBMscExt4FSBase	KEYWORD1
+USBMscExt4FS	KEYWORD1
+USBMscExt4FSReadOnly	KEYWORD1
+USBMscAutoFS	KEYWORD1
+USBMscFSPool	KEYWORD1
+USBMscPartition	KEYWORD1
+USBMscPartitionTable	KEYWORD1
+USBMscPartitionEntry	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+task	KEYWORD2
+isMounted	KEYWORD2
+mountedDeviceCount	KEYWORD2
+deviceAddress	KEYWORD2
+blockCount	KEYWORD2
+blockSize	KEYWORD2
+capacity	KEYWORD2
+inquiry	KEYWORD2
+readBlocks	KEYWORD2
+writeBlocks	KEYWORD2
+onMount	KEYWORD2
+onUnmount	KEYWORD2
+mounted	KEYWORD2
+isFat	KEYWORD2
+isExt4	KEYWORD2
+fs	KEYWORD2
+end	KEYWORD2
+mountedCount	KEYWORD2
+open	KEYWORD2
+exists	KEYWORD2
+remove	KEYWORD2
+rename	KEYWORD2
+mkdir	KEYWORD2
+rmdir	KEYWORD2
+isDirectory	KEYWORD2
+openNextFile	KEYWORD2
+rewindDirectory	KEYWORD2
+name	KEYWORD2
+path	KEYWORD2
+size	KEYWORD2
+position	KEYWORD2
+seek	KEYWORD2
+close	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+USB_HOST_MSC_RHPORT	LITERAL1
